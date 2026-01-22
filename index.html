@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Porra Champions League 2025-26</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-trophy"></i> Porra Champions League 2025-26</h1>
+            <div class="mode-indicator">
+                <span id="mode-status">Modo: Invitado</span>
+                <button id="admin-toggle" class="btn-admin">Entrar como Admin</button>
+                <button id="logout-btn" class="btn-logout" style="display:none;">Salir</button>
+            </div>
+            <div class="tabs">
+                <button class="tab active" data-tab="league" id="league-tab-btn">League</button>
+                <button class="tab" data-tab="pronosticos" id="pronosticos-tab-btn">Pronosticos</button>
+                <button class="tab" data-tab="clasificacion" id="clasificacion-tab-btn">Clasificación</button>
+            </div>
+        </header>
+
+        <main>
+            <div id="league-tab" class="tab-content active">
+                <h2><i class="fas fa-futbol"></i> Partidos y Clasificación de Equipos</h2>
+                <div class="controls">
+                    <select id="matchday-filter">
+                        <option value="all">Todas las Jornadas</option>
+                        <option value="1">J1</option>
+                        <option value="2">J2</option>
+                        <option value="3">J3</option>
+                        <option value="4">J4</option>
+                        <option value="5">J5</option>
+                        <option value="6">J6</option>
+                        <option value="7">J7</option>
+                        <option value="8">J8</option>
+                    </select>
+                    <button id="save-btn" class="btn-save" disabled><i class="fas fa-save"></i> Guardar Cambios</button>
+                    <button id="restore-btn" class="btn-restore" disabled><i class="fas fa-undo"></i> Restaurar Excel</button>
+                    <button id="export-btn" class="btn-export"><i class="fas fa-download"></i> Exportar Backup</button>
+                    <button id="import-btn" class="btn-import"><i class="fas fa-upload"></i> Importar Backup</button>
+                </div>
+                <div class="matches-container">
+                    <h3>Partidos (144 total)</h3>
+                    <div id="matches-list">Cargando partidos...</div>
+                </div>
+                <div class="standings-container">
+                    <h3>Clasificación de Equipos (36 equipos)</h3>
+                    <div id="standings-table">Cargando clasificación...</div>
+                </div>
+            </div>
+
+            <div id="pronosticos-tab" class="tab-content">
+                <h2><i class="fas fa-external-link-alt"></i> Pronósticos Detallados</h2>
+                <p>Redirigiendo a la vista de pronósticos...</p>
+                <p>Si no eres redirigido automáticamente, <a href="https://guille93.github.io/predictions-viewer/" target="_blank">haz clic aquí</a>.</p>
+            </div>
+
+            <div id="clasificacion-tab" class="tab-content">
+                <h2><i class="fas fa-chart-bar"></i> Clasificación de Participantes</h2>
+                <div id="clas-table">Cargando clasificación...</div>
+                <div class="statistics-container">
+                    <h3><i class="fas fa-chart-line"></i> Estadísticas</h3>
+                    <div id="statistics-table">Cargando estadísticas...</div>
+                </div>
+                <div class="validation-info">
+                    <p id="validation-result"></p>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Aplicación estática para GitHub Pages • Datos extraídos del Excel original</p>
+            <p><i class="fas fa-info-circle"></i> Modo admin permite editar resultados reales. PIN: 1234 (configurable en config.js)</p>
+        </footer>
+    </div>
+
+    <!-- Admin Login Modal -->
+    <div id="admin-modal" class="modal">
+        <div class="modal-content">
+            <h3><i class="fas fa-lock"></i> Acceso Admin</h3>
+            <p>Introduce el PIN para entrar en modo edición:</p>
+            <input type="password" id="admin-pin" placeholder="PIN" maxlength="4">
+            <div class="modal-buttons">
+                <button id="modal-confirm" class="btn-confirm">Confirmar</button>
+                <button id="modal-cancel" class="btn-cancel">Cancelar</button>
+            </div>
+            <p id="modal-error" class="error-message"></p>
+        </div>
+    </div>
+
+    <!-- File Input for Import (hidden) -->
+    <input type="file" id="file-input" accept=".json" style="display:none;">
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

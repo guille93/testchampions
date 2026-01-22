@@ -1,0 +1,1298 @@
+[
+  {
+    "id": "1_Athletic Bilbao_Arsenal",
+    "matchday": 1,
+    "datetime": "2025-09-16T18:45:00",
+    "home": "Athletic Bilbao",
+    "away": "Arsenal",
+    "homeGoals": 0,
+    "awayGoals": 2
+  },
+  {
+    "id": "1_PSV Eindhoven_Union Saint-Gilloise",
+    "matchday": 1,
+    "datetime": "2025-09-16T18:45:00",
+    "home": "PSV Eindhoven",
+    "away": "Union Saint-Gilloise",
+    "homeGoals": 1,
+    "awayGoals": 3
+  },
+  {
+    "id": "1_Juventus_Borussia Dortmund",
+    "matchday": 1,
+    "datetime": "2025-09-16T21:00:00",
+    "home": "Juventus",
+    "away": "Borussia Dortmund",
+    "homeGoals": 4,
+    "awayGoals": 4
+  },
+  {
+    "id": "1_Real Madrid_Marseille",
+    "matchday": 1,
+    "datetime": "2025-09-16T21:00:00",
+    "home": "Real Madrid",
+    "away": "Marseille",
+    "homeGoals": 2,
+    "awayGoals": 1
+  },
+  {
+    "id": "1_Benfica_Qarabağ",
+    "matchday": 1,
+    "datetime": "2025-09-16T21:00:00",
+    "home": "Benfica",
+    "away": "Qarabağ",
+    "homeGoals": 2,
+    "awayGoals": 3
+  },
+  {
+    "id": "1_Tottenham_Villarreal",
+    "matchday": 1,
+    "datetime": "2025-09-16T21:00:00",
+    "home": "Tottenham",
+    "away": "Villarreal",
+    "homeGoals": 1,
+    "awayGoals": 0
+  },
+  {
+    "id": "1_Olympiakos_Pafos",
+    "matchday": 1,
+    "datetime": "2025-09-17T18:45:00",
+    "home": "Olympiakos",
+    "away": "Pafos",
+    "homeGoals": 0,
+    "awayGoals": 0
+  },
+  {
+    "id": "1_Slavia Praha_Bodø/Glimt",
+    "matchday": 1,
+    "datetime": "2025-09-17T18:45:00",
+    "home": "Slavia Praha",
+    "away": "Bodø/Glimt",
+    "homeGoals": 2,
+    "awayGoals": 2
+  },
+  {
+    "id": "1_Ajax_Inter Milan",
+    "matchday": 1,
+    "datetime": "2025-09-17T21:00:00",
+    "home": "Ajax",
+    "away": "Inter Milan",
+    "homeGoals": 0,
+    "awayGoals": 2
+  },
+  {
+    "id": "1_Bayern München_Chelsea",
+    "matchday": 1,
+    "datetime": "2025-09-17T21:00:00",
+    "home": "Bayern München",
+    "away": "Chelsea",
+    "homeGoals": 3,
+    "awayGoals": 1
+  },
+  {
+    "id": "1_Liverpool_Atlético Madrid",
+    "matchday": 1,
+    "datetime": "2025-09-17T21:00:00",
+    "home": "Liverpool",
+    "away": "Atlético Madrid",
+    "homeGoals": 3,
+    "awayGoals": 2
+  },
+  {
+    "id": "1_PSG_Atalanta",
+    "matchday": 1,
+    "datetime": "2025-09-17T21:00:00",
+    "home": "PSG",
+    "away": "Atalanta",
+    "homeGoals": 4,
+    "awayGoals": 0
+  },
+  {
+    "id": "1_Brugge_Monaco",
+    "matchday": 1,
+    "datetime": "2025-09-18T18:45:00",
+    "home": "Brugge",
+    "away": "Monaco",
+    "homeGoals": 4,
+    "awayGoals": 1
+  },
+  {
+    "id": "1_Copenhagen_Bayer Leverkusen",
+    "matchday": 1,
+    "datetime": "2025-09-18T18:45:00",
+    "home": "Copenhagen",
+    "away": "Bayer Leverkusen",
+    "homeGoals": 2,
+    "awayGoals": 2
+  },
+  {
+    "id": "1_Eintracht Frankfurt_Galatasaray",
+    "matchday": 1,
+    "datetime": "2025-09-18T21:00:00",
+    "home": "Eintracht Frankfurt",
+    "away": "Galatasaray",
+    "homeGoals": 5,
+    "awayGoals": 1
+  },
+  {
+    "id": "1_Manchester City_Napoli",
+    "matchday": 1,
+    "datetime": "2025-09-18T21:00:00",
+    "home": "Manchester City",
+    "away": "Napoli",
+    "homeGoals": 2,
+    "awayGoals": 0
+  },
+  {
+    "id": "1_Newcastle_Barcelona",
+    "matchday": 1,
+    "datetime": "2025-09-18T21:00:00",
+    "home": "Newcastle",
+    "away": "Barcelona",
+    "homeGoals": 1,
+    "awayGoals": 2
+  },
+  {
+    "id": "1_Sporting Portugal_Kairat Almaty",
+    "matchday": 1,
+    "datetime": "2025-09-18T21:00:00",
+    "home": "Sporting Portugal",
+    "away": "Kairat Almaty",
+    "homeGoals": 4,
+    "awayGoals": 1
+  },
+  {
+    "id": "2_Atalanta_Brugge",
+    "matchday": 2,
+    "datetime": "2025-09-30T18:45:00",
+    "home": "Atalanta",
+    "away": "Brugge",
+    "homeGoals": 2,
+    "awayGoals": 1
+  },
+  {
+    "id": "2_Kairat Almaty_Real Madrid",
+    "matchday": 2,
+    "datetime": "2025-09-30T18:45:00",
+    "home": "Kairat Almaty",
+    "away": "Real Madrid",
+    "homeGoals": 0,
+    "awayGoals": 5
+  },
+  {
+    "id": "2_Atlético Madrid_Eintracht Frankfurt",
+    "matchday": 2,
+    "datetime": "2025-09-30T21:00:00",
+    "home": "Atlético Madrid",
+    "away": "Eintracht Frankfurt",
+    "homeGoals": 5,
+    "awayGoals": 1
+  },
+  {
+    "id": "2_Chelsea_Benfica",
+    "matchday": 2,
+    "datetime": "2025-09-30T21:00:00",
+    "home": "Chelsea",
+    "away": "Benfica",
+    "homeGoals": 1,
+    "awayGoals": 0
+  },
+  {
+    "id": "2_Inter Milan_Slavia Praha",
+    "matchday": 2,
+    "datetime": "2025-09-30T21:00:00",
+    "home": "Inter Milan",
+    "away": "Slavia Praha",
+    "homeGoals": 3,
+    "awayGoals": 0
+  },
+  {
+    "id": "2_Bodø/Glimt_Tottenham",
+    "matchday": 2,
+    "datetime": "2025-09-30T21:00:00",
+    "home": "Bodø/Glimt",
+    "away": "Tottenham",
+    "homeGoals": 2,
+    "awayGoals": 2
+  },
+  {
+    "id": "2_Galatasaray_Liverpool",
+    "matchday": 2,
+    "datetime": "2025-09-30T21:00:00",
+    "home": "Galatasaray",
+    "away": "Liverpool",
+    "homeGoals": 1,
+    "awayGoals": 0
+  },
+  {
+    "id": "2_Marseille_Ajax",
+    "matchday": 2,
+    "datetime": "2025-09-30T21:00:00",
+    "home": "Marseille",
+    "away": "Ajax",
+    "homeGoals": 4,
+    "awayGoals": 0
+  },
+  {
+    "id": "2_Pafos_Bayern München",
+    "matchday": 2,
+    "datetime": "2025-09-30T21:00:00",
+    "home": "Pafos",
+    "away": "Bayern München",
+    "homeGoals": 1,
+    "awayGoals": 5
+  },
+  {
+    "id": "2_Qarabağ_Copenhagen",
+    "matchday": 2,
+    "datetime": "2025-10-01T18:45:00",
+    "home": "Qarabağ",
+    "away": "Copenhagen",
+    "homeGoals": 2,
+    "awayGoals": 0
+  },
+  {
+    "id": "2_Union Saint-Gilloise_Newcastle",
+    "matchday": 2,
+    "datetime": "2025-10-01T18:45:00",
+    "home": "Union Saint-Gilloise",
+    "away": "Newcastle",
+    "homeGoals": 0,
+    "awayGoals": 4
+  },
+  {
+    "id": "2_Arsenal_Olympiakos",
+    "matchday": 2,
+    "datetime": "2025-10-01T21:00:00",
+    "home": "Arsenal",
+    "away": "Olympiakos",
+    "homeGoals": 2,
+    "awayGoals": 0
+  },
+  {
+    "id": "2_Monaco_Manchester City",
+    "matchday": 2,
+    "datetime": "2025-10-01T21:00:00",
+    "home": "Monaco",
+    "away": "Manchester City",
+    "homeGoals": 2,
+    "awayGoals": 2
+  },
+  {
+    "id": "2_Bayer Leverkusen_PSV Eindhoven",
+    "matchday": 2,
+    "datetime": "2025-10-01T21:00:00",
+    "home": "Bayer Leverkusen",
+    "away": "PSV Eindhoven",
+    "homeGoals": 1,
+    "awayGoals": 1
+  },
+  {
+    "id": "2_Borussia Dortmund_Athletic Bilbao",
+    "matchday": 2,
+    "datetime": "2025-10-01T21:00:00",
+    "home": "Borussia Dortmund",
+    "away": "Athletic Bilbao",
+    "homeGoals": 4,
+    "awayGoals": 1
+  },
+  {
+    "id": "2_Barcelona_PSG",
+    "matchday": 2,
+    "datetime": "2025-10-01T21:00:00",
+    "home": "Barcelona",
+    "away": "PSG",
+    "homeGoals": 1,
+    "awayGoals": 2
+  },
+  {
+    "id": "2_Napoli_Sporting Portugal",
+    "matchday": 2,
+    "datetime": "2025-10-01T21:00:00",
+    "home": "Napoli",
+    "away": "Sporting Portugal",
+    "homeGoals": 2,
+    "awayGoals": 1
+  },
+  {
+    "id": "2_Villarreal_Juventus",
+    "matchday": 2,
+    "datetime": "2025-10-01T21:00:00",
+    "home": "Villarreal",
+    "away": "Juventus",
+    "homeGoals": 2,
+    "awayGoals": 2
+  },
+  {
+    "id": "3_Barcelona_Olympiakos",
+    "matchday": 3,
+    "datetime": "2025-10-21T18:45:00",
+    "home": "Barcelona",
+    "away": "Olympiakos",
+    "homeGoals": 6,
+    "awayGoals": 1
+  },
+  {
+    "id": "3_Kairat Almaty_Pafos",
+    "matchday": 3,
+    "datetime": "2025-10-21T18:45:00",
+    "home": "Kairat Almaty",
+    "away": "Pafos",
+    "homeGoals": 0,
+    "awayGoals": 0
+  },
+  {
+    "id": "3_Arsenal_Atlético Madrid",
+    "matchday": 3,
+    "datetime": "2025-10-21T21:00:00",
+    "home": "Arsenal",
+    "away": "Atlético Madrid",
+    "homeGoals": 4,
+    "awayGoals": 0
+  },
+  {
+    "id": "3_Bayer Leverkusen_PSG",
+    "matchday": 3,
+    "datetime": "2025-10-21T21:00:00",
+    "home": "Bayer Leverkusen",
+    "away": "PSG",
+    "homeGoals": 2,
+    "awayGoals": 7
+  },
+  {
+    "id": "3_Copenhagen_Borussia Dortmund",
+    "matchday": 3,
+    "datetime": "2025-10-21T21:00:00",
+    "home": "Copenhagen",
+    "away": "Borussia Dortmund",
+    "homeGoals": 2,
+    "awayGoals": 4
+  },
+  {
+    "id": "3_Newcastle_Benfica",
+    "matchday": 3,
+    "datetime": "2025-10-21T21:00:00",
+    "home": "Newcastle",
+    "away": "Benfica",
+    "homeGoals": 3,
+    "awayGoals": 0
+  },
+  {
+    "id": "3_PSV Eindhoven_Napoli",
+    "matchday": 3,
+    "datetime": "2025-10-21T21:00:00",
+    "home": "PSV Eindhoven",
+    "away": "Napoli",
+    "homeGoals": 6,
+    "awayGoals": 2
+  },
+  {
+    "id": "3_Union Saint-Gilloise_Inter Milan",
+    "matchday": 3,
+    "datetime": "2025-10-21T21:00:00",
+    "home": "Union Saint-Gilloise",
+    "away": "Inter Milan",
+    "homeGoals": 0,
+    "awayGoals": 4
+  },
+  {
+    "id": "3_Villarreal_Manchester City",
+    "matchday": 3,
+    "datetime": "2025-10-21T21:00:00",
+    "home": "Villarreal",
+    "away": "Manchester City",
+    "homeGoals": 0,
+    "awayGoals": 2
+  },
+  {
+    "id": "3_Athletic Bilbao_Qarabağ",
+    "matchday": 3,
+    "datetime": "2025-10-22T18:45:00",
+    "home": "Athletic Bilbao",
+    "away": "Qarabağ",
+    "homeGoals": 3,
+    "awayGoals": 1
+  },
+  {
+    "id": "3_Galatasaray_Bodø/Glimt",
+    "matchday": 3,
+    "datetime": "2025-10-22T18:45:00",
+    "home": "Galatasaray",
+    "away": "Bodø/Glimt",
+    "homeGoals": 3,
+    "awayGoals": 1
+  },
+  {
+    "id": "3_Monaco_Tottenham",
+    "matchday": 3,
+    "datetime": "2025-10-22T21:00:00",
+    "home": "Monaco",
+    "away": "Tottenham",
+    "homeGoals": 0,
+    "awayGoals": 0
+  },
+  {
+    "id": "3_Atalanta_Slavia Praha",
+    "matchday": 3,
+    "datetime": "2025-10-22T21:00:00",
+    "home": "Atalanta",
+    "away": "Slavia Praha",
+    "homeGoals": 0,
+    "awayGoals": 0
+  },
+  {
+    "id": "3_Chelsea_Ajax",
+    "matchday": 3,
+    "datetime": "2025-10-22T21:00:00",
+    "home": "Chelsea",
+    "away": "Ajax",
+    "homeGoals": 5,
+    "awayGoals": 1
+  },
+  {
+    "id": "3_Eintracht Frankfurt_Liverpool",
+    "matchday": 3,
+    "datetime": "2025-10-22T21:00:00",
+    "home": "Eintracht Frankfurt",
+    "away": "Liverpool",
+    "homeGoals": 1,
+    "awayGoals": 5
+  },
+  {
+    "id": "3_Bayern München_Brugge",
+    "matchday": 3,
+    "datetime": "2025-10-22T21:00:00",
+    "home": "Bayern München",
+    "away": "Brugge",
+    "homeGoals": 4,
+    "awayGoals": 0
+  },
+  {
+    "id": "3_Real Madrid_Juventus",
+    "matchday": 3,
+    "datetime": "2025-10-22T21:00:00",
+    "home": "Real Madrid",
+    "away": "Juventus",
+    "homeGoals": 1,
+    "awayGoals": 0
+  },
+  {
+    "id": "3_Sporting Portugal_Marseille",
+    "matchday": 3,
+    "datetime": "2025-10-22T21:00:00",
+    "home": "Sporting Portugal",
+    "away": "Marseille",
+    "homeGoals": 2,
+    "awayGoals": 1
+  },
+  {
+    "id": "4_Slavia Praha_Arsenal",
+    "matchday": 4,
+    "datetime": "2025-11-04T18:45:00",
+    "home": "Slavia Praha",
+    "away": "Arsenal",
+    "homeGoals": 0,
+    "awayGoals": 3
+  },
+  {
+    "id": "4_Napoli_Eintracht Frankfurt",
+    "matchday": 4,
+    "datetime": "2025-11-04T18:45:00",
+    "home": "Napoli",
+    "away": "Eintracht Frankfurt",
+    "homeGoals": 0,
+    "awayGoals": 0
+  },
+  {
+    "id": "4_Atlético Madrid_Union Saint-Gilloise",
+    "matchday": 4,
+    "datetime": "2025-11-04T21:00:00",
+    "home": "Atlético Madrid",
+    "away": "Union Saint-Gilloise",
+    "homeGoals": 3,
+    "awayGoals": 1
+  },
+  {
+    "id": "4_Bodø/Glimt_Monaco",
+    "matchday": 4,
+    "datetime": "2025-11-04T21:00:00",
+    "home": "Bodø/Glimt",
+    "away": "Monaco",
+    "homeGoals": 0,
+    "awayGoals": 1
+  },
+  {
+    "id": "4_Juventus_Sporting Portugal",
+    "matchday": 4,
+    "datetime": "2025-11-04T21:00:00",
+    "home": "Juventus",
+    "away": "Sporting Portugal",
+    "homeGoals": 1,
+    "awayGoals": 1
+  },
+  {
+    "id": "4_Liverpool_Real Madrid",
+    "matchday": 4,
+    "datetime": "2025-11-04T21:00:00",
+    "home": "Liverpool",
+    "away": "Real Madrid",
+    "homeGoals": 1,
+    "awayGoals": 0
+  },
+  {
+    "id": "4_Olympiakos_PSV Eindhoven",
+    "matchday": 4,
+    "datetime": "2025-11-04T21:00:00",
+    "home": "Olympiakos",
+    "away": "PSV Eindhoven",
+    "homeGoals": 1,
+    "awayGoals": 1
+  },
+  {
+    "id": "4_PSG_Bayern München",
+    "matchday": 4,
+    "datetime": "2025-11-04T21:00:00",
+    "home": "PSG",
+    "away": "Bayern München",
+    "homeGoals": 1,
+    "awayGoals": 2
+  },
+  {
+    "id": "4_Tottenham_Copenhagen",
+    "matchday": 4,
+    "datetime": "2025-11-04T21:00:00",
+    "home": "Tottenham",
+    "away": "Copenhagen",
+    "homeGoals": 4,
+    "awayGoals": 0
+  },
+  {
+    "id": "4_Pafos_Villarreal",
+    "matchday": 4,
+    "datetime": "2025-11-05T18:45:00",
+    "home": "Pafos",
+    "away": "Villarreal",
+    "homeGoals": 1,
+    "awayGoals": 0
+  },
+  {
+    "id": "4_Qarabağ_Chelsea",
+    "matchday": 4,
+    "datetime": "2025-11-05T18:45:00",
+    "home": "Qarabağ",
+    "away": "Chelsea",
+    "homeGoals": 2,
+    "awayGoals": 2
+  },
+  {
+    "id": "4_Ajax_Galatasaray",
+    "matchday": 4,
+    "datetime": "2025-11-05T21:00:00",
+    "home": "Ajax",
+    "away": "Galatasaray",
+    "homeGoals": 0,
+    "awayGoals": 3
+  },
+  {
+    "id": "4_Brugge_Barcelona",
+    "matchday": 4,
+    "datetime": "2025-11-05T21:00:00",
+    "home": "Brugge",
+    "away": "Barcelona",
+    "homeGoals": 3,
+    "awayGoals": 3
+  },
+  {
+    "id": "4_Inter Milan_Kairat Almaty",
+    "matchday": 4,
+    "datetime": "2025-11-05T21:00:00",
+    "home": "Inter Milan",
+    "away": "Kairat Almaty",
+    "homeGoals": 2,
+    "awayGoals": 1
+  },
+  {
+    "id": "4_Manchester City_Borussia Dortmund",
+    "matchday": 4,
+    "datetime": "2025-11-05T21:00:00",
+    "home": "Manchester City",
+    "away": "Borussia Dortmund",
+    "homeGoals": 4,
+    "awayGoals": 1
+  },
+  {
+    "id": "4_Newcastle_Athletic Bilbao",
+    "matchday": 4,
+    "datetime": "2025-11-05T21:00:00",
+    "home": "Newcastle",
+    "away": "Athletic Bilbao",
+    "homeGoals": 2,
+    "awayGoals": 0
+  },
+  {
+    "id": "4_Marseille_Atalanta",
+    "matchday": 4,
+    "datetime": "2025-11-05T21:00:00",
+    "home": "Marseille",
+    "away": "Atalanta",
+    "homeGoals": 0,
+    "awayGoals": 1
+  },
+  {
+    "id": "4_Benfica_Bayer Leverkusen",
+    "matchday": 4,
+    "datetime": "2025-11-05T21:00:00",
+    "home": "Benfica",
+    "away": "Bayer Leverkusen",
+    "homeGoals": 0,
+    "awayGoals": 1
+  },
+  {
+    "id": "5_Ajax_Benfica",
+    "matchday": 5,
+    "datetime": "2025-11-25T18:45:00",
+    "home": "Ajax",
+    "away": "Benfica",
+    "homeGoals": 0,
+    "awayGoals": 2
+  },
+  {
+    "id": "5_Galatasaray_Union Saint-Gilloise",
+    "matchday": 5,
+    "datetime": "2025-11-25T18:45:00",
+    "home": "Galatasaray",
+    "away": "Union Saint-Gilloise",
+    "homeGoals": 0,
+    "awayGoals": 1
+  },
+  {
+    "id": "5_Borussia Dortmund_Villarreal",
+    "matchday": 5,
+    "datetime": "2025-11-25T21:00:00",
+    "home": "Borussia Dortmund",
+    "away": "Villarreal",
+    "homeGoals": 4,
+    "awayGoals": 0
+  },
+  {
+    "id": "5_Chelsea_Barcelona",
+    "matchday": 5,
+    "datetime": "2025-11-25T21:00:00",
+    "home": "Chelsea",
+    "away": "Barcelona",
+    "homeGoals": 3,
+    "awayGoals": 0
+  },
+  {
+    "id": "5_Bodø/Glimt_Juventus",
+    "matchday": 5,
+    "datetime": "2025-11-25T21:00:00",
+    "home": "Bodø/Glimt",
+    "away": "Juventus",
+    "homeGoals": 2,
+    "awayGoals": 3
+  },
+  {
+    "id": "5_Manchester City_Bayer Leverkusen",
+    "matchday": 5,
+    "datetime": "2025-11-25T21:00:00",
+    "home": "Manchester City",
+    "away": "Bayer Leverkusen",
+    "homeGoals": 0,
+    "awayGoals": 2
+  },
+  {
+    "id": "5_Marseille_Newcastle",
+    "matchday": 5,
+    "datetime": "2025-11-25T21:00:00",
+    "home": "Marseille",
+    "away": "Newcastle",
+    "homeGoals": 2,
+    "awayGoals": 1
+  },
+  {
+    "id": "5_Slavia Praha_Athletic Bilbao",
+    "matchday": 5,
+    "datetime": "2025-11-25T21:00:00",
+    "home": "Slavia Praha",
+    "away": "Athletic Bilbao",
+    "homeGoals": 0,
+    "awayGoals": 0
+  },
+  {
+    "id": "5_Napoli_Qarabağ",
+    "matchday": 5,
+    "datetime": "2025-11-25T21:00:00",
+    "home": "Napoli",
+    "away": "Qarabağ",
+    "homeGoals": 2,
+    "awayGoals": 0
+  },
+  {
+    "id": "5_Copenhagen_Kairat Almaty",
+    "matchday": 5,
+    "datetime": "2025-11-26T18:45:00",
+    "home": "Copenhagen",
+    "away": "Kairat Almaty",
+    "homeGoals": 3,
+    "awayGoals": 2
+  },
+  {
+    "id": "5_Pafos_Monaco",
+    "matchday": 5,
+    "datetime": "2025-11-26T18:45:00",
+    "home": "Pafos",
+    "away": "Monaco",
+    "homeGoals": 2,
+    "awayGoals": 2
+  },
+  {
+    "id": "5_Arsenal_Bayern München",
+    "matchday": 5,
+    "datetime": "2025-11-26T21:00:00",
+    "home": "Arsenal",
+    "away": "Bayern München",
+    "homeGoals": 3,
+    "awayGoals": 1
+  },
+  {
+    "id": "5_Atlético Madrid_Inter Milan",
+    "matchday": 5,
+    "datetime": "2025-11-26T21:00:00",
+    "home": "Atlético Madrid",
+    "away": "Inter Milan",
+    "homeGoals": 2,
+    "awayGoals": 1
+  },
+  {
+    "id": "5_Eintracht Frankfurt_Atalanta",
+    "matchday": 5,
+    "datetime": "2025-11-26T21:00:00",
+    "home": "Eintracht Frankfurt",
+    "away": "Atalanta",
+    "homeGoals": 0,
+    "awayGoals": 3
+  },
+  {
+    "id": "5_Liverpool_PSV Eindhoven",
+    "matchday": 5,
+    "datetime": "2025-11-26T21:00:00",
+    "home": "Liverpool",
+    "away": "PSV Eindhoven",
+    "homeGoals": 1,
+    "awayGoals": 4
+  },
+  {
+    "id": "5_Olympiakos_Real Madrid",
+    "matchday": 5,
+    "datetime": "2025-11-26T21:00:00",
+    "home": "Olympiakos",
+    "away": "Real Madrid",
+    "homeGoals": 3,
+    "awayGoals": 4
+  },
+  {
+    "id": "5_PSG_Tottenham",
+    "matchday": 5,
+    "datetime": "2025-11-26T21:00:00",
+    "home": "PSG",
+    "away": "Tottenham",
+    "homeGoals": 5,
+    "awayGoals": 3
+  },
+  {
+    "id": "5_Sporting Portugal_Brugge",
+    "matchday": 5,
+    "datetime": "2025-11-26T21:00:00",
+    "home": "Sporting Portugal",
+    "away": "Brugge",
+    "homeGoals": 3,
+    "awayGoals": 0
+  },
+  {
+    "id": "6_Kairat Almaty_Olympiakos",
+    "matchday": 6,
+    "datetime": "2025-12-09T16:30:00",
+    "home": "Kairat Almaty",
+    "away": "Olympiakos",
+    "homeGoals": 0,
+    "awayGoals": 1
+  },
+  {
+    "id": "6_Bayern München_Sporting Portugal",
+    "matchday": 6,
+    "datetime": "2025-12-09T18:45:00",
+    "home": "Bayern München",
+    "away": "Sporting Portugal",
+    "homeGoals": 3,
+    "awayGoals": 1
+  },
+  {
+    "id": "6_Monaco_Galatasaray",
+    "matchday": 6,
+    "datetime": "2025-12-09T21:00:00",
+    "home": "Monaco",
+    "away": "Galatasaray",
+    "homeGoals": 1,
+    "awayGoals": 0
+  },
+  {
+    "id": "6_Atalanta_Chelsea",
+    "matchday": 6,
+    "datetime": "2025-12-09T21:00:00",
+    "home": "Atalanta",
+    "away": "Chelsea",
+    "homeGoals": 2,
+    "awayGoals": 1
+  },
+  {
+    "id": "6_Barcelona_Eintracht Frankfurt",
+    "matchday": 6,
+    "datetime": "2025-12-09T21:00:00",
+    "home": "Barcelona",
+    "away": "Eintracht Frankfurt",
+    "homeGoals": 2,
+    "awayGoals": 1
+  },
+  {
+    "id": "6_Inter Milan_Liverpool",
+    "matchday": 6,
+    "datetime": "2025-12-09T21:00:00",
+    "home": "Inter Milan",
+    "away": "Liverpool",
+    "homeGoals": 0,
+    "awayGoals": 1
+  },
+  {
+    "id": "6_PSV Eindhoven_Atlético Madrid",
+    "matchday": 6,
+    "datetime": "2025-12-09T21:00:00",
+    "home": "PSV Eindhoven",
+    "away": "Atlético Madrid",
+    "homeGoals": 2,
+    "awayGoals": 3
+  },
+  {
+    "id": "6_Union Saint-Gilloise_Marseille",
+    "matchday": 6,
+    "datetime": "2025-12-09T21:00:00",
+    "home": "Union Saint-Gilloise",
+    "away": "Marseille",
+    "homeGoals": 2,
+    "awayGoals": 3
+  },
+  {
+    "id": "6_Tottenham_Slavia Praha",
+    "matchday": 6,
+    "datetime": "2025-12-09T21:00:00",
+    "home": "Tottenham",
+    "away": "Slavia Praha",
+    "homeGoals": 3,
+    "awayGoals": 0
+  },
+  {
+    "id": "6_Qarabağ_Ajax",
+    "matchday": 6,
+    "datetime": "2025-12-10T18:45:00",
+    "home": "Qarabağ",
+    "away": "Ajax",
+    "homeGoals": 2,
+    "awayGoals": 4
+  },
+  {
+    "id": "6_Villarreal_Copenhagen",
+    "matchday": 6,
+    "datetime": "2025-12-10T18:45:00",
+    "home": "Villarreal",
+    "away": "Copenhagen",
+    "homeGoals": 2,
+    "awayGoals": 3
+  },
+  {
+    "id": "6_Athletic Bilbao_PSG",
+    "matchday": 6,
+    "datetime": "2025-12-10T21:00:00",
+    "home": "Athletic Bilbao",
+    "away": "PSG",
+    "homeGoals": 0,
+    "awayGoals": 0
+  },
+  {
+    "id": "6_Bayer Leverkusen_Newcastle",
+    "matchday": 6,
+    "datetime": "2025-12-10T21:00:00",
+    "home": "Bayer Leverkusen",
+    "away": "Newcastle",
+    "homeGoals": 2,
+    "awayGoals": 2
+  },
+  {
+    "id": "6_Borussia Dortmund_Bodø/Glimt",
+    "matchday": 6,
+    "datetime": "2025-12-10T21:00:00",
+    "home": "Borussia Dortmund",
+    "away": "Bodø/Glimt",
+    "homeGoals": 2,
+    "awayGoals": 2
+  },
+  {
+    "id": "6_Brugge_Arsenal",
+    "matchday": 6,
+    "datetime": "2025-12-10T21:00:00",
+    "home": "Brugge",
+    "away": "Arsenal",
+    "homeGoals": 0,
+    "awayGoals": 3
+  },
+  {
+    "id": "6_Juventus_Pafos",
+    "matchday": 6,
+    "datetime": "2025-12-10T21:00:00",
+    "home": "Juventus",
+    "away": "Pafos",
+    "homeGoals": 2,
+    "awayGoals": 0
+  },
+  {
+    "id": "6_Real Madrid_Manchester City",
+    "matchday": 6,
+    "datetime": "2025-12-10T21:00:00",
+    "home": "Real Madrid",
+    "away": "Manchester City",
+    "homeGoals": 1,
+    "awayGoals": 2
+  },
+  {
+    "id": "6_Benfica_Napoli",
+    "matchday": 6,
+    "datetime": "2025-12-10T21:00:00",
+    "home": "Benfica",
+    "away": "Napoli",
+    "homeGoals": 2,
+    "awayGoals": 0
+  },
+  {
+    "id": "7_Kairat Almaty_Brugge",
+    "matchday": 7,
+    "datetime": "2026-01-20T16:30:00",
+    "home": "Kairat Almaty",
+    "away": "Brugge",
+    "homeGoals": 1,
+    "awayGoals": 4
+  },
+  {
+    "id": "7_Bodø/Glimt_Manchester City",
+    "matchday": 7,
+    "datetime": "2026-01-20T18:45:00",
+    "home": "Bodø/Glimt",
+    "away": "Manchester City",
+    "homeGoals": 3,
+    "awayGoals": 1
+  },
+  {
+    "id": "7_Copenhagen_Napoli",
+    "matchday": 7,
+    "datetime": "2026-01-20T21:00:00",
+    "home": "Copenhagen",
+    "away": "Napoli",
+    "homeGoals": 1,
+    "awayGoals": 1
+  },
+  {
+    "id": "7_Inter Milan_Arsenal",
+    "matchday": 7,
+    "datetime": "2026-01-20T21:00:00",
+    "home": "Inter Milan",
+    "away": "Arsenal",
+    "homeGoals": 1,
+    "awayGoals": 3
+  },
+  {
+    "id": "7_Olympiakos_Bayer Leverkusen",
+    "matchday": 7,
+    "datetime": "2026-01-20T21:00:00",
+    "home": "Olympiakos",
+    "away": "Bayer Leverkusen",
+    "homeGoals": 2,
+    "awayGoals": 0
+  },
+  {
+    "id": "7_Real Madrid_Monaco",
+    "matchday": 7,
+    "datetime": "2026-01-20T21:00:00",
+    "home": "Real Madrid",
+    "away": "Monaco",
+    "homeGoals": 6,
+    "awayGoals": 1
+  },
+  {
+    "id": "7_Sporting Portugal_PSG",
+    "matchday": 7,
+    "datetime": "2026-01-20T21:00:00",
+    "home": "Sporting Portugal",
+    "away": "PSG",
+    "homeGoals": 2,
+    "awayGoals": 1
+  },
+  {
+    "id": "7_Tottenham_Borussia Dortmund",
+    "matchday": 7,
+    "datetime": "2026-01-20T21:00:00",
+    "home": "Tottenham",
+    "away": "Borussia Dortmund",
+    "homeGoals": 2,
+    "awayGoals": 0
+  },
+  {
+    "id": "7_Villarreal_Ajax",
+    "matchday": 7,
+    "datetime": "2026-01-20T21:00:00",
+    "home": "Villarreal",
+    "away": "Ajax",
+    "homeGoals": 1,
+    "awayGoals": 2
+  },
+  {
+    "id": "7_Galatasaray_Atlético Madrid",
+    "matchday": 7,
+    "datetime": "2026-01-21T18:45:00",
+    "home": "Galatasaray",
+    "away": "Atlético Madrid",
+    "homeGoals": 1,
+    "awayGoals": 1
+  },
+  {
+    "id": "7_Qarabağ_Eintracht Frankfurt",
+    "matchday": 7,
+    "datetime": "2026-01-21T18:45:00",
+    "home": "Qarabağ",
+    "away": "Eintracht Frankfurt",
+    "homeGoals": 3,
+    "awayGoals": 2
+  },
+  {
+    "id": "7_Atalanta_Athletic Bilbao",
+    "matchday": 7,
+    "datetime": "2026-01-21T21:00:00",
+    "home": "Atalanta",
+    "away": "Athletic Bilbao",
+    "homeGoals": 2,
+    "awayGoals": 3
+  },
+  {
+    "id": "7_Chelsea_Pafos",
+    "matchday": 7,
+    "datetime": "2026-01-21T21:00:00",
+    "home": "Chelsea",
+    "away": "Pafos",
+    "homeGoals": 1,
+    "awayGoals": 0
+  },
+  {
+    "id": "7_Bayern München_Union Saint-Gilloise",
+    "matchday": 7,
+    "datetime": "2026-01-21T21:00:00",
+    "home": "Bayern München",
+    "away": "Union Saint-Gilloise",
+    "homeGoals": 2,
+    "awayGoals": 0
+  },
+  {
+    "id": "7_Juventus_Benfica",
+    "matchday": 7,
+    "datetime": "2026-01-21T21:00:00",
+    "home": "Juventus",
+    "away": "Benfica",
+    "homeGoals": 2,
+    "awayGoals": 0
+  },
+  {
+    "id": "7_Newcastle_PSV Eindhoven",
+    "matchday": 7,
+    "datetime": "2026-01-21T21:00:00",
+    "home": "Newcastle",
+    "away": "PSV Eindhoven",
+    "homeGoals": 3,
+    "awayGoals": 0
+  },
+  {
+    "id": "7_Marseille_Liverpool",
+    "matchday": 7,
+    "datetime": "2026-01-21T21:00:00",
+    "home": "Marseille",
+    "away": "Liverpool",
+    "homeGoals": 0,
+    "awayGoals": 3
+  },
+  {
+    "id": "7_Slavia Praha_Barcelona",
+    "matchday": 7,
+    "datetime": "2026-01-21T21:00:00",
+    "home": "Slavia Praha",
+    "away": "Barcelona",
+    "homeGoals": 2,
+    "awayGoals": 4
+  },
+  {
+    "id": "8_Ajax_Olympiakos",
+    "matchday": 8,
+    "datetime": "2026-01-28T21:00:00",
+    "home": "Ajax",
+    "away": "Olympiakos",
+    "homeGoals": null,
+    "awayGoals": null
+  },
+  {
+    "id": "8_Arsenal_Kairat Almaty",
+    "matchday": 8,
+    "datetime": "2026-01-28T21:00:00",
+    "home": "Arsenal",
+    "away": "Kairat Almaty",
+    "homeGoals": null,
+    "awayGoals": null
+  },
+  {
+    "id": "8_Monaco_Juventus",
+    "matchday": 8,
+    "datetime": "2026-01-28T21:00:00",
+    "home": "Monaco",
+    "away": "Juventus",
+    "homeGoals": null,
+    "awayGoals": null
+  },
+  {
+    "id": "8_Athletic Bilbao_Sporting Portugal",
+    "matchday": 8,
+    "datetime": "2026-01-28T21:00:00",
+    "home": "Athletic Bilbao",
+    "away": "Sporting Portugal",
+    "homeGoals": null,
+    "awayGoals": null
+  },
+  {
+    "id": "8_Atlético Madrid_Bodø/Glimt",
+    "matchday": 8,
+    "datetime": "2026-01-28T21:00:00",
+    "home": "Atlético Madrid",
+    "away": "Bodø/Glimt",
+    "homeGoals": null,
+    "awayGoals": null
+  },
+  {
+    "id": "8_Bayer Leverkusen_Villarreal",
+    "matchday": 8,
+    "datetime": "2026-01-28T21:00:00",
+    "home": "Bayer Leverkusen",
+    "away": "Villarreal",
+    "homeGoals": null,
+    "awayGoals": null
+  },
+  {
+    "id": "8_Borussia Dortmund_Inter Milan",
+    "matchday": 8,
+    "datetime": "2026-01-28T21:00:00",
+    "home": "Borussia Dortmund",
+    "away": "Inter Milan",
+    "homeGoals": null,
+    "awayGoals": null
+  },
+  {
+    "id": "8_Brugge_Marseille",
+    "matchday": 8,
+    "datetime": "2026-01-28T21:00:00",
+    "home": "Brugge",
+    "away": "Marseille",
+    "homeGoals": null,
+    "awayGoals": null
+  },
+  {
+    "id": "8_Eintracht Frankfurt_Tottenham",
+    "matchday": 8,
+    "datetime": "2026-01-28T21:00:00",
+    "home": "Eintracht Frankfurt",
+    "away": "Tottenham",
+    "homeGoals": null,
+    "awayGoals": null
+  },
+  {
+    "id": "8_Barcelona_Copenhagen",
+    "matchday": 8,
+    "datetime": "2026-01-28T21:00:00",
+    "home": "Barcelona",
+    "away": "Copenhagen",
+    "homeGoals": null,
+    "awayGoals": null
+  },
+  {
+    "id": "8_Liverpool_Qarabağ",
+    "matchday": 8,
+    "datetime": "2026-01-28T21:00:00",
+    "home": "Liverpool",
+    "away": "Qarabağ",
+    "homeGoals": null,
+    "awayGoals": null
+  },
+  {
+    "id": "8_Manchester City_Galatasaray",
+    "matchday": 8,
+    "datetime": "2026-01-28T21:00:00",
+    "home": "Manchester City",
+    "away": "Galatasaray",
+    "homeGoals": null,
+    "awayGoals": null
+  },
+  {
+    "id": "8_Pafos_Slavia Praha",
+    "matchday": 8,
+    "datetime": "2026-01-28T21:00:00",
+    "home": "Pafos",
+    "away": "Slavia Praha",
+    "homeGoals": null,
+    "awayGoals": null
+  },
+  {
+    "id": "8_PSG_Newcastle",
+    "matchday": 8,
+    "datetime": "2026-01-28T21:00:00",
+    "home": "PSG",
+    "away": "Newcastle",
+    "homeGoals": null,
+    "awayGoals": null
+  },
+  {
+    "id": "8_PSV Eindhoven_Bayern München",
+    "matchday": 8,
+    "datetime": "2026-01-28T21:00:00",
+    "home": "PSV Eindhoven",
+    "away": "Bayern München",
+    "homeGoals": null,
+    "awayGoals": null
+  },
+  {
+    "id": "8_Union Saint-Gilloise_Atalanta",
+    "matchday": 8,
+    "datetime": "2026-01-28T21:00:00",
+    "home": "Union Saint-Gilloise",
+    "away": "Atalanta",
+    "homeGoals": null,
+    "awayGoals": null
+  },
+  {
+    "id": "8_Benfica_Real Madrid",
+    "matchday": 8,
+    "datetime": "2026-01-28T21:00:00",
+    "home": "Benfica",
+    "away": "Real Madrid",
+    "homeGoals": null,
+    "awayGoals": null
+  },
+  {
+    "id": "8_Napoli_Chelsea",
+    "matchday": 8,
+    "datetime": "2026-01-28T21:00:00",
+    "home": "Napoli",
+    "away": "Chelsea",
+    "homeGoals": null,
+    "awayGoals": null
+  }
+]

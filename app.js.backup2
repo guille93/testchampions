@@ -1,0 +1,587 @@
+// app.js - Lógica principal de la aplicación
+
+class ChampionsPorraApp {
+    constructor() {
+        this.data = {
+            matches: [],
+            participants: [],
+            predictions: {},
+            initialClas: [],
+            teams: [],
+            rules: {}
+        };
+        this.editedMatches = new Map(); // Map<matchId, {homeGoals, awayGoals}>
+        this.isAdmin = false;
+        this.init();
+    }
+
+    async init() {
+        await this.loadData();
+        this.setupEventListeners();
+        this.checkAdminStatus();
+        this.renderLeagueTab();
+        this.setupValidation();
+    }
+
+    async loadData() {
+        try {
+            for (const [key, path] of Object.entries(CONFIG.DATA_PATHS)) {
+                const response = await fetch(path);
+                if (!response.ok) throw new Error(`Error loading ${path}`);
+                this.data[key] = await response.json();
+            }
+            console.log('Datos cargados exitosamente');
+        } catch (error) {
+            console.error('Error cargando datos:', error);
+            alert('Error al cargar los datos. Verifica la consola.');
+        }
+    }
+
+    setupEventListeners() {
+        // Tabs
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', (e) => this.switchTab(e.target.dataset.tab));
+        });
+
+        // Admin toggle
+        document.getElementById('admin-toggle').addEventListener('click', () => this.showAdminModal());
+        document.getElementById('logout-btn').addEventListener('click', () => this.logoutAdmin());
+        document.getElementById('modal-confirm').addEventListener('click', () => this.verifyAdminPin());
+        document.getElementById('modal-cancel').addEventListener('click', () => this.hideAdminModal());
+        document.getElementById('admin-pin').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') this.verifyAdminPin();
+        });
+
+        // Filtros y botones
+        document.getElementById('matchday-filter').addEventListener('change', () => this.renderLeagueTab());
+        document.getElementById('save-btn').addEventListener('click', () => this.saveChanges());
+        document.getElementById('restore-btn').addEventListener('click', () => this.restoreExcel());
+        document.getElementById('export-btn').addEventListener('click', () => this.exportBackup());
+        document.getElementById('import-btn').addEventListener('click', () => document.getElementById('file-input').click());
+        document.getElementById('file-input').addEventListener('change', (e) => this.importBackup(e));
+        document.getElementById('participant-filter').addEventListener('change', () => this.renderAdminTab());
+        document.getElementById('matchday-filter-admin').addEventListener('change', () => this.renderAdminTab());
+        document.getElementById('played-only').addEventListener('change', () => this.renderAdminTab());
+    }
+
+    switchTab(tabName) {
+        document.querySelectorAll('.tab, .tab-content').forEach(el => el.classList.remove('active'));
+        document.querySelector(`.tab[data-tab="${tabName}"]`).classList.add('active');
+        document.getElementById(`${tabName}-tab`).classList.add('active');
+
+        switch (tabName) {
+            case 'league':
+                this.renderLeagueTab();
+                break;
+            case 'admin':
+                this.renderAdminTab();
+                break;
+            case 'clas':
+                this.renderClasTab();
+                break;
+        }
+    }
+
+    // Helper: Get match with edited goals
+    getMatchResult(matchId) {
+        if (this.editedMatches.has(matchId)) {
+            return this.editedMatches.get(matchId);
+        }
+        const match = this.data.matches.find(m => m.id === matchId);
+        if (!match) return { homeGoals: null, awayGoals: null };
+        return { homeGoals: match.homeGoals, awayGoals: match.awayGoals };
+    }
+
+    // Helper: Calculate match sign
+    calculateMatchSign(homeGoals, awayGoals) {
+        if (homeGoals === null || awayGoals === null) return null;
+        if (homeGoals > awayGoals) return '1';
+        if (homeGoals === awayGoals) return 'X';
+        return '2';
+    }
+
+    // Helper: Calculate points for a prediction
+    calculatePointsForPrediction(matchId, prediction) {
+        if (!prediction || prediction.predHome === null || prediction.predAway === null) {
+            return 0; // No prediction
+        }
+        const result = this.getMatchResult(matchId);
+        const { homeGoals, awayGoals } = result;
+        if (homeGoals === null || awayGoals === null) {
+            return 0; // Match not played
+        }
+        const realSign = this.calculateMatchSign(homeGoals, awayGoals);
+        const predSign = prediction.predSign;
+        let points = 0;
+        if (realSign === predSign) {
+            points += CONFIG.SCORING_RULES.signo; // 2 points for correct sign
+            if (homeGoals === prediction.predHome && awayGoals === prediction.predAway) {
+                points += CONFIG.SCORING_RULES.exacto; // Additional 3 points for exact result
+            }
+        }
+        return points;
+    }
+
+    // Helper: Calculate team standings
+    calculateTeamStandings() {
+        const teams = {};
+        for (const match of this.data.matches) {
+            const result = this.getMatchResult(match.id);
+            let { homeGoals, awayGoals } = result;
+            // Use original if edited; but editedMatches stores changes, so we use result
+            // Skip if not played
+            if (homeGoals === null || awayGoals === null) {
+                continue;
+            }
+            const home = match.home;
+            const away = match.away;
+            if (!teams[home]) {
+                teams[home] = {
+                    team: home,
+                    points: 0,
+                    played: 0,
+                    wins: 0,
+                    draws: 0,
+                    losses: 0,
+                    goalsFor: 0,
+                    goalsAgainst: 0,
+                    goalDifference: 0,
+                    awayGoals: 0,
+                    awayWins: 0
+                };
+            }
+            if (!teams[away]) {
+                teams[away] = {
+                    team: away,
+                    points: 0,
+                    played: 0,
+                    wins: 0,
+                    draws: 0,
+                    losses: 0,
+                    goalsFor: 0,
+                    goalsAgainst: 0,
+                    goalDifference: 0,
+                    awayGoals: 0,
+                    awayWins: 0
+                };
+            }
+            // Update stats
+            teams[home].played += 1;
+            teams[away].played += 1;
+            teams[home].goalsFor += homeGoals;
+            teams[home].goalsAgainst += awayGoals;
+            teams[away].goalsFor += awayGoals;
+            teams[away].goalsAgainst += homeGoals;
+            teams[home].goalDifference = teams[home].goalsFor - teams[home].goalsAgainst;
+            teams[away].goalDifference = teams[away].goalsFor - teams[away].goalsAgainst;
+            teams[away].awayGoals += awayGoals;
+            if (homeGoals > awayGoals) {
+                teams[home].points += 3;
+                teams[home].wins += 1;
+                teams[away].losses += 1;
+            } else if (homeGoals < awayGoals) {
+                teams[away].points += 3;
+                teams[away].wins += 1;
+                teams[away].awayWins += 1;
+                teams[home].losses += 1;
+            } else {
+                teams[home].points += 1;
+                teams[away].points += 1;
+                teams[home].draws += 1;
+                teams[away].draws += 1;
+            }
+        }
+        // Convert to array and sort
+        const standings = Object.values(teams);
+        standings.sort((a, b) => {
+            if (b.points !== a.points) return b.points - a.points;
+            if (b.goalDifference !== a.goalDifference) return b.goalDifference - a.goalDifference;
+            if (b.goalsFor !== a.goalsFor) return b.goalsFor - a.goalsFor;
+            if (b.awayGoals !== a.awayGoals) return b.awayGoals - a.awayGoals;
+            if (b.wins !== a.wins) return b.wins - a.wins;
+            if (b.awayWins !== a.awayWins) return b.awayWins - a.awayWins;
+            return a.team.localeCompare(b.team);
+        });
+        // Add positions
+        standings.forEach((team, index) => {
+            team.position = index + 1;
+        });
+        return standings;
+    }
+
+    // Helper: Get match status
+    getMatchStatus(match) {
+        const result = this.getMatchResult(match.id);
+        if (result.homeGoals === null || result.awayGoals === null) {
+            return 'pending';
+        }
+        return 'played';
+    }
+
+    // Helper: Format datetime
+    formatDateTime(datetimeStr) {
+        const date = new Date(datetimeStr);
+        return date.toLocaleDateString('es-ES', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+    }
+
+    // Render League tab: matches and team standings
+    renderLeagueTab() {
+        const matchdayFilter = document.getElementById('matchday-filter').value;
+        let filteredMatches = this.data.matches;
+        if (matchdayFilter !== 'all') {
+            const matchdayNum = parseInt(matchdayFilter);
+            filteredMatches = this.data.matches.filter(m => m.matchday === matchdayNum);
+        }
+
+        // Render matches
+        const matchesList = document.getElementById('matches-list');
+        matchesList.innerHTML = '';
+        filteredMatches.forEach(match => {
+            const result = this.getMatchResult(match.id);
+            const status = this.getMatchStatus(match);
+            const isEdited = this.editedMatches.has(match.id);
+            const matchElement = document.createElement('div');
+            matchElement.className = `match ${status} ${isEdited ? 'edited' : ''}`;
+            matchElement.innerHTML = `
+                <div class="match-id">${match.id}</div>
+                <div class="matchday">J${match.matchday}</div>
+                <div class="datetime">${this.formatDateTime(match.datetime)}</div>
+                <div class="home-team">${match.home}</div>
+                <div class="goals-input">
+                    <input type="number" min="0" step="1" value="${result.homeGoals !== null ? result.homeGoals : ''}" 
+                        ${this.isAdmin ? '' : 'disabled'} data-match="${match.id}" data-side="home" />
+                </div>
+                <div class="vs">-</div>
+                <div class="goals-input">
+                    <input type="number" min="0" step="1" value="${result.awayGoals !== null ? result.awayGoals : ''}" 
+                        ${this.isAdmin ? '' : 'disabled'} data-match="${match.id}" data-side="away" />
+                </div>
+                <div class="away-team">${match.away}</div>
+                <div class="status">${status === 'played' ? 'Jugado' : 'Pendiente'}</div>
+                <div class="sign">${this.calculateMatchSign(result.homeGoals, result.awayGoals) || '-'}</div>
+            `;
+            // Add event listeners for input changes (only in admin mode)
+            if (this.isAdmin) {
+                const homeInput = matchElement.querySelector('input[data-side="home"]');
+                const awayInput = matchElement.querySelector('input[data-side="away"]');
+                const updateHandler = () => {
+                    const homeVal = homeInput.value === '' ? null : parseInt(homeInput.value);
+                    const awayVal = awayInput.value === '' ? null : parseInt(awayInput.value);
+                    if (homeVal !== null && awayVal !== null) {
+                        this.editedMatches.set(match.id, { homeGoals: homeVal, awayGoals: awayVal });
+                    } else {
+                        this.editedMatches.delete(match.id);
+                    }
+                    matchElement.classList.toggle('edited', this.editedMatches.has(match.id));
+                    // Update sign
+                    matchElement.querySelector('.sign').textContent = this.calculateMatchSign(homeVal, awayVal) || '-';
+                    // Update status
+                    const newStatus = (homeVal !== null && awayVal !== null) ? 'played' : 'pending';
+                    matchElement.querySelector('.status').textContent = newStatus === 'played' ? 'Jugado' : 'Pendiente';
+                    matchElement.className = `match ${newStatus} ${this.editedMatches.has(match.id) ? 'edited' : ''}`;
+                    // Recalculate standings
+                    this.renderTeamStandings();
+                };
+                homeInput.addEventListener('change', updateHandler);
+                awayInput.addEventListener('change', updateHandler);
+            }
+            matchesList.appendChild(matchElement);
+        });
+
+        // Render team standings
+        this.renderTeamStandings();
+    }
+
+    // Render team standings table
+    renderTeamStandings() {
+        const standings = this.calculateTeamStandings();
+        const container = document.getElementById('standings-table');
+        let html = `
+            <table>
+                <thead>
+                    <tr>
+                        <th>Pos</th>
+                        <th>Equipo</th>
+                        <th>Pts</th>
+                        <th>PJ</th>
+                        <th>G</th>
+                        <th>E</th>
+                        <th>P</th>
+                        <th>GF</th>
+                        <th>GC</th>
+                        <th>DG</th>
+                        <th>GFu</th>
+                        <th>Gv</th>
+                    </tr>
+                </thead>
+                <tbody>
+        `;
+        standings.forEach(team => {
+            html += `
+                <tr>
+                    <td>${team.position}</td>
+                    <td>${team.team}</td>
+                    <td>${team.points}</td>
+                    <td>${team.played}</td>
+                    <td>${team.wins}</td>
+                    <td>${team.draws}</td>
+                    <td>${team.losses}</td>
+                    <td>${team.goalsFor}</td>
+                    <td>${team.goalsAgainst}</td>
+                    <td>${team.goalDifference}</td>
+                    <td>${team.awayGoals}</td>
+                    <td>${team.awayWins}</td>
+                </tr>
+            `;
+        });
+        html += '</tbody></table>';
+        container.innerHTML = html;
+    }
+
+    // Render Admin tab: predictions table
+    renderAdminTab() {
+        const participantFilter = document.getElementById('participant-filter').value;
+        const matchdayFilter = document.getElementById('matchday-filter-admin').value;
+        const playedOnly = document.getElementById('played-only').checked;
+
+        let filteredMatches = this.data.matches;
+        if (matchdayFilter !== 'all') {
+            const matchdayNum = parseInt(matchdayFilter);
+            filteredMatches = this.data.matches.filter(m => m.matchday === matchdayNum);
+        }
+        if (playedOnly) {
+            filteredMatches = filteredMatches.filter(m => this.getMatchStatus(m) === 'played');
+        }
+
+        const container = document.getElementById('predictions-table');
+        let html = `
+            <table>
+                <thead>
+                    <tr>
+                        <th>Partido</th>
+                        <th>Resultado Real</th>
+        `;
+        // Participant columns
+        const participants = this.data.participants;
+        participants.forEach(p => {
+            if (participantFilter === 'all' || participantFilter === p) {
+                html += `<th>${p}</th>`;
+            }
+        });
+        html += '</tr></thead><tbody>';
+
+        filteredMatches.forEach(match => {
+            const result = this.getMatchResult(match.id);
+            const realSign = this.calculateMatchSign(result.homeGoals, result.awayGoals);
+            html += `
+                <tr>
+                    <td>${match.home} - ${match.away} (J${match.matchday})</td>
+                    <td>${result.homeGoals !== null ? result.homeGoals : '-'} - ${result.awayGoals !== null ? result.awayGoals : '-'} ${realSign ? `(${realSign})` : ''}</td>
+            `;
+            participants.forEach(p => {
+                if (participantFilter === 'all' || participantFilter === p) {
+                    const pred = this.data.predictions[p] && this.data.predictions[p][match.id];
+                    if (pred) {
+                        const points = this.calculatePointsForPrediction(match.id, pred);
+                        let color = 'gray';
+                        if (result.homeGoals !== null && result.awayGoals !== null) {
+                            if (points === 5) color = 'green';
+                            else if (points === 2) color = 'yellow';
+                            else color = 'red';
+                        }
+                        html += `<td class="prediction ${color}">${pred.predHome}-${pred.predAway} (${pred.predSign})<br><small>${points} pts</small></td>`;
+                    } else {
+                        html += '<td class="prediction gray">-</td>';
+                    }
+                }
+            });
+            html += '</tr>';
+        });
+        html += '</tbody></table>';
+        container.innerHTML = html;
+    }
+
+    // Render Clas tab: participant ranking
+    renderClasTab() {
+        // Calculate points for each participant
+        const participantPoints = {};
+        this.data.participants.forEach(p => {
+            participantPoints[p] = 0;
+        });
+        this.data.matches.forEach(match => {
+            const result = this.getMatchResult(match.id);
+            if (result.homeGoals !== null && result.awayGoals !== null) {
+                this.data.participants.forEach(p => {
+                    const pred = this.data.predictions[p] && this.data.predictions[p][match.id];
+                    if (pred) {
+                        participantPoints[p] += this.calculatePointsForPrediction(match.id, pred);
+                    }
+                });
+            }
+        });
+
+        // Create array and sort
+        const ranking = this.data.participants.map(p => ({
+            player: p,
+            totalPoints: participantPoints[p]
+        }));
+        ranking.sort((a, b) => b.totalPoints - a.totalPoints);
+
+        // Apply dense ranking
+        let currentRank = 1;
+        for (let i = 0; i < ranking.length; i++) {
+            if (i > 0 && ranking[i].totalPoints !== ranking[i - 1].totalPoints) {
+                currentRank = i + 1;
+            }
+            ranking[i].position = currentRank;
+        }
+
+        // Render table
+        const container = document.getElementById('clas-table');
+        let html = `
+            <table>
+                <thead>
+                    <tr>
+                        <th>Pos</th>
+                        <th>Participante</th>
+                        <th>Puntos</th>
+                    </tr>
+                </thead>
+                <tbody>
+        `;
+        ranking.forEach(row => {
+            html += `
+                <tr>
+                    <td>${row.position}</td>
+                    <td>${row.player}</td>
+                    <td>${row.totalPoints}</td>
+                </tr>
+            `;
+        });
+        html += '</tbody></table>';
+        container.innerHTML = html;
+
+        // Validation banner
+        this.updateValidationBanner(ranking);
+    }
+
+    // Update validation banner
+    updateValidationBanner(currentRanking) {
+        // Compare with initial_clas
+        const validationResult = document.getElementById('validation-result');
+        const initialMap = {};
+        this.data.initialClas.forEach(item => {
+            initialMap[item.player] = item.totalPoints;
+        });
+        let discrepancies = [];
+        currentRanking.forEach(item => {
+            const initial = initialMap[item.player];
+            if (initial !== undefined && initial !== item.totalPoints) {
+                discrepancies.push(`${item.player}: ${item.totalPoints} vs ${initial}`);
+            }
+        });
+        if (discrepancies.length === 0) {
+            validationResult.innerHTML = '<div class="validation-pass">✓ Validación correcta: los puntos coinciden con Excel</div>';
+        } else {
+            validationResult.innerHTML = `<div class="validation-fail">✗ Validación fallida: discrepancias: ${discrepancies.join(', ')}</div>`;
+        }
+    }
+
+    // Recalculate all
+    recalculateAll() {
+        this.renderLeagueTab();
+        this.renderAdminTab();
+        this.renderClasTab();
+    }
+
+    // Setup validation
+    setupValidation() {
+        // Initial validation when data is loaded
+        this.renderClasTab();
+    }
+
+    // Admin mode UI updates
+    updateUIForAdmin() {
+        document.getElementById('mode-status').textContent = 'Modo: Admin';
+        document.getElementById('admin-toggle').style.display = 'none';
+        document.getElementById('logout-btn').style.display = 'inline-flex';
+        document.getElementById('save-btn').disabled = false;
+        document.getElementById('restore-btn').disabled = false;
+        // Re-render to enable inputs
+        this.renderLeagueTab();
+    }
+
+    updateUIForGuest() {
+        document.getElementById('mode-status').textContent = 'Modo: Invitado';
+        document.getElementById('admin-toggle').style.display = 'inline-flex';
+        document.getElementById('logout-btn').style.display = 'none';
+        document.getElementById('save-btn').disabled = true;
+        document.getElementById('restore-btn').disabled = true;
+        this.renderLeagueTab();
+    }
+
+    // Save changes to localStorage
+    saveChanges() {
+        const editedObj = Object.fromEntries(this.editedMatches);
+        localStorage.setItem(CONFIG.LOCALSTORAGE_KEYS.editedMatches, JSON.stringify(editedObj));
+        alert('Cambios guardados en localStorage.');
+        this.recalculateAll();
+    }
+
+    // Restore Excel original data
+    restoreExcel() {
+        if (confirm('¿Restaurar datos originales del Excel? Se perderán los cambios no guardados.')) {
+            localStorage.removeItem(CONFIG.LOCALSTORAGE_KEYS.editedMatches);
+            this.editedMatches.clear();
+            this.recalculateAll();
+            alert('Datos restaurados al estado inicial del Excel.');
+        }
+    }
+
+    exportBackup() {
+        const data = {
+            editedMatches: Object.fromEntries(this.editedMatches),
+            exportDate: new Date().toISOString()
+        };
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `champions_backup_${new Date().toISOString().slice(0,10)}.json`;
+        a.click();
+        URL.revokeObjectURL(url);
+    }
+
+    importBackup(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            try {
+                const data = JSON.parse(e.target.result);
+                if (data.editedMatches) {
+                    this.editedMatches = new Map(Object.entries(data.editedMatches));
+                    this.saveChanges();
+                    alert('Backup importado exitosamente.');
+                } else {
+                    throw new Error('Formato de backup inválido');
+                }
+            } catch (error) {
+                alert('Error importando backup: ' + error.message);
+            }
+        };
+        reader.readAsText(file);
+        event.target.value = ''; // Reset input
+    }
+}
+
+// Iniciar la aplicación cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', () => {
+    window.app = new ChampionsPorraApp();
+});
