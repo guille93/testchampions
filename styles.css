@@ -456,234 +456,257 @@ footer p {
 }
 
 * {
-.predictions-viewer-container box-sizing: border-box;
-.predictions-viewer-container margin: 0;
-.predictions-viewer-container padding: 0;
+/* ===== PREDICTIONS VIEWER - DISEÑO MEJORADO ===== */
+.predictions-viewer-container {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    color: #333;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
 }
 
-.predictions-viewer-container body {
-.predictions-viewer-container font-family: 'Segoe UI', system-ui, sans-serif;
-.predictions-viewer-container line-height: 1.6;
-.predictions-viewer-container background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-.predictions-viewer-container color: var(--dark);
-.predictions-viewer-container min-height: 100vh;
-.predictions-viewer-container padding: 1rem;
+.predictions-viewer-container .filter {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    padding: 1.5rem;
+    border-radius: 16px;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 25px rgba(106, 17, 203, 0.2);
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
 }
 
-.container {
-.predictions-viewer-container max-width: 1200px;
-.predictions-viewer-container margin: 0 auto;
+.predictions-viewer-container .filter label {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-right: 10px;
 }
 
-.predictions-viewer-container header {
-.predictions-viewer-container text-align: center;
-.predictions-viewer-container margin-bottom: 2rem;
-.predictions-viewer-container padding: 1.5rem;
-.predictions-viewer-container background: linear-gradient(to right, var(--primary), var(--secondary));
-.predictions-viewer-container border-radius: 15px;
-.predictions-viewer-container box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-.predictions-viewer-container color: white;
+.predictions-viewer-container .filter select {
+    flex-grow: 1;
+    max-width: 300px;
+    padding: 0.9rem 1.2rem;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    font-size: 1rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s;
 }
 
-.header-nav {
-.predictions-viewer-container display: flex;
-.predictions-viewer-container justify-content: space-between;
-.predictions-viewer-container align-items: center;
-.predictions-viewer-container flex-wrap: wrap;
-.predictions-viewer-container gap: 1rem;
+.predictions-viewer-container .filter select:hover,
+.predictions-viewer-container .filter select:focus {
+    background-color: white;
+    border-color: white;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+    outline: none;
 }
 
-.predictions-viewer-container h1 {
-.predictions-viewer-container font-size: 1.8rem;
+.predictions-viewer-container .match-card {
+    background: white;
+    border-radius: 18px;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    border: 1px solid #eaeaea;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.live-results-btn {
-.predictions-viewer-container background-color: rgba(255, 255, 255, 0.2);
-.predictions-viewer-container color: #ff4757;
-.predictions-viewer-container padding: 0.6rem 1.2rem;
-.predictions-viewer-container border-radius: 8px;
-.predictions-viewer-container text-decoration: none;
-.predictions-viewer-container font-weight: bold;
-.predictions-viewer-container font-size: 1rem;
-.predictions-viewer-container transition: all 0.3s ease;
-.predictions-viewer-container border: 2px solid #ff4757;
-.predictions-viewer-container position: relative;
-.predictions-viewer-container overflow: hidden;
+.predictions-viewer-container .match-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
 }
 
-.live-results-btn:hover {
-.predictions-viewer-container background-color: rgba(255, 71, 87, 0.2);
-.predictions-viewer-container transform: translateY(-2px);
-.predictions-viewer-container box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-.predictions-viewer-container color: #ff3742;
+.predictions-viewer-container .match-header {
+    background: linear-gradient(to right, #1a2980, #26d0ce);
+    color: white;
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
-@keyframes live-pulse {
-0%, 100% {
-.predictions-viewer-container color: #ff4757;
-.predictions-viewer-container text-shadow: 0 0 5px rgba(255, 71, 87, 0.5);
-}
-50% {
-.predictions-viewer-container color: #ff6b7a;
-.predictions-viewer-container text-shadow: 0 0 10px rgba(255, 71, 87, 0.8), 0 0 15px rgba(255, 71, 87, 0.4);
-}
-}
-
-.live-results-btn {
-.predictions-viewer-container animation: live-pulse 2s ease-in-out infinite;
+.predictions-viewer-container .match-date {
+    font-weight: bold;
+    font-size: 1rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-.filter {
-.predictions-viewer-container background: white;
-.predictions-viewer-container padding: 1.2rem;
-.predictions-viewer-container border-radius: 12px;
-.predictions-viewer-container margin-bottom: 2rem;
-.predictions-viewer-container box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-.predictions-viewer-container font-size: 1.1rem;
+.predictions-viewer-container .match-date::before {
+    content: '📅';
+    font-size: 0.9rem;
 }
 
-.filter label {
-.predictions-viewer-container display: block;
-.predictions-viewer-container margin-bottom: 0.5rem;
-.predictions-viewer-container font-weight: bold;
+.predictions-viewer-container .match-teams {
+    font-weight: bold;
+    font-size: 1.4rem;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
 }
 
-.predictions-viewer-container select {
-.predictions-viewer-container width: 100%;
-.predictions-viewer-container padding: 0.8rem;
-.predictions-viewer-container border-radius: 8px;
-.predictions-viewer-container border: 1px solid #e2e8f0;
-.predictions-viewer-container font-size: 1rem;
-.predictions-viewer-container background-color: white;
+.predictions-viewer-container .match-teams::before {
+    content: '⚽';
+    font-size: 1.2rem;
 }
 
-.match-card {
-.predictions-viewer-container background: white;
-.predictions-viewer-container border-radius: 12px;
-.predictions-viewer-container margin-bottom: 1.5rem;
-.predictions-viewer-container box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-.predictions-viewer-container overflow: hidden;
+.predictions-viewer-container .predictions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+    padding: 1.5rem;
 }
 
-.match-header {
-.predictions-viewer-container background: var(--primary);
-.predictions-viewer-container color: white;
-.predictions-viewer-container padding: 1rem;
-.predictions-viewer-container display: flex;
-.predictions-viewer-container justify-content: space-between;
-.predictions-viewer-container align-items: center;
+.predictions-viewer-container .prediction-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #f8fafc;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
 }
 
-.match-date {
-.predictions-viewer-container font-weight: bold;
-.predictions-viewer-container font-size: 1rem;
-.predictions-viewer-container background-color: var(--secondary);
-.predictions-viewer-container padding: 0.4rem 0.8rem;
-.predictions-viewer-container border-radius: 6px;
+.predictions-viewer-container .prediction-item:hover {
+    background-color: #edf2f7;
+    border-color: #cbd5e0;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
-.match-teams {
-.predictions-viewer-container font-weight: bold;
-.predictions-viewer-container font-size: 1.1rem;
+.predictions-viewer-container .participant-name {
+    font-weight: 600;
+    color: #2d3748;
+    font-size: 0.95rem;
+    max-width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-.predictions-grid {
-.predictions-viewer-container display: grid;
-.predictions-viewer-container grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-.predictions-viewer-container gap: 0.5rem;
-.predictions-viewer-container padding: 1rem;
+.predictions-viewer-container .prediction-result {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #2d3748;
+    background: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+    border: 1px solid #cbd5e0;
+    min-width: 70px;
+    text-align: center;
 }
 
-.prediction-item {
-.predictions-viewer-container display: flex;
-.predictions-viewer-container justify-content: space-between;
-.predictions-viewer-container padding: 0.75rem;
-.predictions-viewer-container background-color: #f8f9fc;
-.predictions-viewer-container border-radius: 8px;
-.predictions-viewer-container border: 1px solid #e2e8f0;
-.predictions-viewer-container transition: transform 0.2s, box-shadow 0.2s;
+/* Colores según tipo de predicción */
+.predictions-viewer-container .prediction-result[data-sign="1"] {
+    background: linear-gradient(135deg, #d4edda, #c3e6cb);
+    border-color: #b1dfbb;
+    color: #155724;
 }
 
-.prediction-item:hover {
-.predictions-viewer-container transform: translateY(-2px);
-.predictions-viewer-container box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+.predictions-viewer-container .prediction-result[data-sign="X"] {
+    background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+    border-color: #ffda6a;
+    color: #856404;
 }
 
-.participant-name {
-.predictions-viewer-container font-weight: bold;
+.predictions-viewer-container .prediction-result[data-sign="2"] {
+    background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+    border-color: #f1b0b7;
+    color: #721c24;
 }
 
-.prediction-result {
-.predictions-viewer-container color: var(--secondary);
-.predictions-viewer-container font-weight: bold;
+/* Sin pronóstico */
+.predictions-viewer-container .prediction-item .prediction-result:empty,
+.predictions-viewer-container .prediction-item .prediction-result:contains("Sin pronóstico") {
+    background: #e2e8f0;
+    color: #718096;
+    font-style: italic;
 }
 
-.no-matches {
-.predictions-viewer-container text-align: center;
-.predictions-viewer-container padding: 2rem;
-.predictions-viewer-container background: white;
-.predictions-viewer-container border-radius: 12px;
-.predictions-viewer-container box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-.predictions-viewer-container font-size: 1.2rem;
-.predictions-viewer-container color: #666;
+/* Indicador de acierto exacto (si implementamos esa lógica luego) */
+.predictions-viewer-container .prediction-item.exact-hit .prediction-result {
+    animation: pulse-green 2s infinite;
+    border: 2px solid #38a169;
 }
 
-.predictions-viewer-container @media (max-width: 768px) {
-.match-header {
-.predictions-viewer-container flex-direction: column;
-.predictions-viewer-container align-items: flex-start;
-.predictions-viewer-container gap: 0.5rem;
+@keyframes pulse-green {
+    0% { box-shadow: 0 0 0 0 rgba(56, 161, 105, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(56, 161, 105, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(56, 161, 105, 0); }
 }
 
-.predictions-grid {
-.predictions-viewer-container grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+/* No matches message */
+.predictions-viewer-container .no-matches {
+    text-align: center;
+    padding: 3rem;
+    background: #f8f9fa;
+    border-radius: 16px;
+    color: #6c757d;
+    font-size: 1.2rem;
 }
 
-.header-nav {
-.predictions-viewer-container flex-direction: column;
-.predictions-viewer-container text-align: center;
-}
+/* Responsive */
+@media (max-width: 768px) {
+    .predictions-viewer-container {
+        padding: 0.5rem;
+    }
+    .predictions-viewer-container .filter {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .predictions-viewer-container .filter select {
+        max-width: 100%;
+    }
+    .predictions-viewer-container .match-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.8rem;
+    }
+    .predictions-viewer-container .match-teams {
+        font-size: 1.2rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .predictions-viewer-container .predictions-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 0.8rem;
+        padding: 1rem;
+    }
+    .predictions-viewer-container .prediction-item {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+        padding: 0.8rem;
+    }
+    .predictions-viewer-container .participant-name {
+        max-width: 100%;
+    }
 }
 
-.predictions-viewer-container @media (max-width: 480px) {
-.predictions-viewer-container h1 { font-size: 1.5rem; }
-.predictions-grid {
-.predictions-viewer-container grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-}
-}
-
-.predictions-viewer-container @media (max-width: 400px) {
-.predictions-grid {
-.predictions-viewer-container grid-template-columns: 1fr 1fr;
-}
+@media (max-width: 480px) {
+    .predictions-viewer-container .predictions-grid {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
-.predictions-viewer-container @media (max-width: 360px) {
-.predictions-grid {
-.predictions-viewer-container grid-template-columns: 1fr;
+@media (max-width: 360px) {
+    .predictions-viewer-container .predictions-grid {
+        grid-template-columns: 1fr;
+    }
 }
-}
-</style>
-</head>
-<body>
-<div class="container">
-<header>
-<div class="header-nav">
- <a href="https://guille93.github.io/testchampions/" class="btn-return">← Volver a Clasificación</a>
-<h1>⚽ Porra Champions League</h1>
-<a href="https://www.fotmob.com/" class="live-results-btn" target="_blank">Resultados en directo</a>
-</div>
-</header>
-
-<div class="filter">
-<label for="dateFilter">Filtrar por fecha:</label>
-<select id="dateFilter" onchange="filterMatches()">
-<!-- Las opciones se generarán dinámicamente con JavaScript -->
-</select>
-</div>
-
-<div id="matchesContainer">
-<!-- Los partidos se generarán dinámicamente con JavaScript -->
-</div>
-</div>
-

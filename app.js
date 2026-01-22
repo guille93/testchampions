@@ -664,30 +664,54 @@ class ChampionsPorraApp {
             return;
         }
 
-        // Create match cards
+        // Función para formatear fecha: YYYY-MM-DD -> DD/MM/YYYY
+        const formatDate = (dateStr) => {
+            const [year, month, day] = dateStr.split('-');
+            return `${day}/${month}/${year}`;
+        };
+
+        // Función para extraer signo de la predicción
+        const getSignFromPrediction = (prediction) => {
+            if (!prediction) return '';
+            const parts = prediction.split('|');
+            if (parts.length === 2) {
+                return parts[0]; // '1', 'X', o '2'
+            }
+            return '';
+        };
+
+        // Crear tarjetas de partidos
         matchesData.forEach(match => {
             const matchCard = document.createElement('div');
             matchCard.className = 'match-card';
             matchCard.dataset.date = match.date;
 
-            // Header
+            // Cabecera
             const header = document.createElement('div');
             header.className = 'match-header';
+            // Separar equipos para mejor presentación
+            const [homeTeam, awayTeam] = match.teams.split('-');
             header.innerHTML = `
-                <div class="match-date">${match.date}</div>
-                <div class="match-teams">${match.teams}</div>
+                <div class="match-date">${formatDate(match.date)}</div>
+                <div class="match-teams">
+                    <span class="team home">${homeTeam}</span>
+                    <span class="vs"> vs </span>
+                    <span class="team away">${awayTeam}</span>
+                </div>
             `;
 
-            // Predictions grid
+            // Grid de predicciones
             const predictionsGrid = document.createElement('div');
             predictionsGrid.className = 'predictions-grid';
 
             match.predictions.forEach((prediction, index) => {
                 const predictionItem = document.createElement('div');
                 predictionItem.className = 'prediction-item';
+                const sign = getSignFromPrediction(prediction);
+                const displayPrediction = prediction || 'Sin pronóstico';
                 predictionItem.innerHTML = `
-                    <span class="participant-name">${participants[index]}</span>
-                    <span class="prediction-result">${prediction || 'Sin pronóstico'}</span>
+                    <span class="participant-name" title="${participants[index]}">${participants[index]}</span>
+                    <span class="prediction-result" data-sign="${sign}">${displayPrediction}</span>
                 `;
                 predictionsGrid.appendChild(predictionItem);
             });
@@ -697,7 +721,7 @@ class ChampionsPorraApp {
             container.appendChild(matchCard);
         });
 
-        // Generate date filter options
+        // Generar opciones de filtro de fechas
         this.generateDateFilterOptions(matchesData);
     }
 
@@ -705,35 +729,41 @@ class ChampionsPorraApp {
         const dateFilter = document.getElementById('dateFilter');
         if (!dateFilter) return;
 
-        // Get unique dates
+        // Obtener fechas únicas
         const uniqueDates = [...new Set(matchesData.map(match => match.date))];
         uniqueDates.sort((a, b) => new Date(a) - new Date(b));
 
-        // Clear existing options
+        // Función para formatear fecha en opciones
+        const formatDateForOption = (dateStr) => {
+            const [year, month, day] = dateStr.split('-');
+            return `${day}/${month}/${year}`;
+        };
+
+        // Limpiar opciones existentes
         dateFilter.innerHTML = '';
 
-        // Add "All" option
+        // Agregar opción "Todos"
         const allOption = document.createElement('option');
         allOption.value = 'all';
-        allOption.textContent = 'Todos los partidos';
+        allOption.textContent = '📅 Todos los partidos';
         dateFilter.appendChild(allOption);
 
-        // Add date options
+        // Agregar opciones de fecha
         uniqueDates.forEach(date => {
             const option = document.createElement('option');
             option.value = date;
-            option.textContent = date;
+            option.textContent = formatDateForOption(date);
             dateFilter.appendChild(option);
         });
 
-        // Set default to first date or 'all'
+        // Establecer valor por defecto a la primera fecha o 'all'
         if (uniqueDates.length > 0) {
             dateFilter.value = uniqueDates[0];
         } else {
             dateFilter.value = 'all';
         }
 
-        // Trigger initial filter
+        // Disparar filtro inicial
         this.filterPredictions();
     }
 
@@ -756,8 +786,6 @@ class ChampionsPorraApp {
             container.innerHTML = '<div class="no-matches">No hay partidos para la fecha seleccionada</div>';
         }
     }
-}
-
 // Iniciar la aplicación cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {
     window.app = new ChampionsPorraApp();
