@@ -446,3 +446,244 @@ footer p {
         padding: 8px 10px;
     }
 }
+<style>
+:root {
+--primary: #4361ee;
+--secondary: #3f37c9;
+--accent: #4895ef;
+--light: #f8f9fa;
+--dark: #212529;
+}
+
+* {
+.predictions-viewer-container box-sizing: border-box;
+.predictions-viewer-container margin: 0;
+.predictions-viewer-container padding: 0;
+}
+
+.predictions-viewer-container body {
+.predictions-viewer-container font-family: 'Segoe UI', system-ui, sans-serif;
+.predictions-viewer-container line-height: 1.6;
+.predictions-viewer-container background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+.predictions-viewer-container color: var(--dark);
+.predictions-viewer-container min-height: 100vh;
+.predictions-viewer-container padding: 1rem;
+}
+
+.container {
+.predictions-viewer-container max-width: 1200px;
+.predictions-viewer-container margin: 0 auto;
+}
+
+.predictions-viewer-container header {
+.predictions-viewer-container text-align: center;
+.predictions-viewer-container margin-bottom: 2rem;
+.predictions-viewer-container padding: 1.5rem;
+.predictions-viewer-container background: linear-gradient(to right, var(--primary), var(--secondary));
+.predictions-viewer-container border-radius: 15px;
+.predictions-viewer-container box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+.predictions-viewer-container color: white;
+}
+
+.header-nav {
+.predictions-viewer-container display: flex;
+.predictions-viewer-container justify-content: space-between;
+.predictions-viewer-container align-items: center;
+.predictions-viewer-container flex-wrap: wrap;
+.predictions-viewer-container gap: 1rem;
+}
+
+.predictions-viewer-container h1 {
+.predictions-viewer-container font-size: 1.8rem;
+}
+
+.live-results-btn {
+.predictions-viewer-container background-color: rgba(255, 255, 255, 0.2);
+.predictions-viewer-container color: #ff4757;
+.predictions-viewer-container padding: 0.6rem 1.2rem;
+.predictions-viewer-container border-radius: 8px;
+.predictions-viewer-container text-decoration: none;
+.predictions-viewer-container font-weight: bold;
+.predictions-viewer-container font-size: 1rem;
+.predictions-viewer-container transition: all 0.3s ease;
+.predictions-viewer-container border: 2px solid #ff4757;
+.predictions-viewer-container position: relative;
+.predictions-viewer-container overflow: hidden;
+}
+
+.live-results-btn:hover {
+.predictions-viewer-container background-color: rgba(255, 71, 87, 0.2);
+.predictions-viewer-container transform: translateY(-2px);
+.predictions-viewer-container box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+.predictions-viewer-container color: #ff3742;
+}
+
+@keyframes live-pulse {
+0%, 100% {
+.predictions-viewer-container color: #ff4757;
+.predictions-viewer-container text-shadow: 0 0 5px rgba(255, 71, 87, 0.5);
+}
+50% {
+.predictions-viewer-container color: #ff6b7a;
+.predictions-viewer-container text-shadow: 0 0 10px rgba(255, 71, 87, 0.8), 0 0 15px rgba(255, 71, 87, 0.4);
+}
+}
+
+.live-results-btn {
+.predictions-viewer-container animation: live-pulse 2s ease-in-out infinite;
+}
+
+.filter {
+.predictions-viewer-container background: white;
+.predictions-viewer-container padding: 1.2rem;
+.predictions-viewer-container border-radius: 12px;
+.predictions-viewer-container margin-bottom: 2rem;
+.predictions-viewer-container box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+.predictions-viewer-container font-size: 1.1rem;
+}
+
+.filter label {
+.predictions-viewer-container display: block;
+.predictions-viewer-container margin-bottom: 0.5rem;
+.predictions-viewer-container font-weight: bold;
+}
+
+.predictions-viewer-container select {
+.predictions-viewer-container width: 100%;
+.predictions-viewer-container padding: 0.8rem;
+.predictions-viewer-container border-radius: 8px;
+.predictions-viewer-container border: 1px solid #e2e8f0;
+.predictions-viewer-container font-size: 1rem;
+.predictions-viewer-container background-color: white;
+}
+
+.match-card {
+.predictions-viewer-container background: white;
+.predictions-viewer-container border-radius: 12px;
+.predictions-viewer-container margin-bottom: 1.5rem;
+.predictions-viewer-container box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+.predictions-viewer-container overflow: hidden;
+}
+
+.match-header {
+.predictions-viewer-container background: var(--primary);
+.predictions-viewer-container color: white;
+.predictions-viewer-container padding: 1rem;
+.predictions-viewer-container display: flex;
+.predictions-viewer-container justify-content: space-between;
+.predictions-viewer-container align-items: center;
+}
+
+.match-date {
+.predictions-viewer-container font-weight: bold;
+.predictions-viewer-container font-size: 1rem;
+.predictions-viewer-container background-color: var(--secondary);
+.predictions-viewer-container padding: 0.4rem 0.8rem;
+.predictions-viewer-container border-radius: 6px;
+}
+
+.match-teams {
+.predictions-viewer-container font-weight: bold;
+.predictions-viewer-container font-size: 1.1rem;
+}
+
+.predictions-grid {
+.predictions-viewer-container display: grid;
+.predictions-viewer-container grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+.predictions-viewer-container gap: 0.5rem;
+.predictions-viewer-container padding: 1rem;
+}
+
+.prediction-item {
+.predictions-viewer-container display: flex;
+.predictions-viewer-container justify-content: space-between;
+.predictions-viewer-container padding: 0.75rem;
+.predictions-viewer-container background-color: #f8f9fc;
+.predictions-viewer-container border-radius: 8px;
+.predictions-viewer-container border: 1px solid #e2e8f0;
+.predictions-viewer-container transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.prediction-item:hover {
+.predictions-viewer-container transform: translateY(-2px);
+.predictions-viewer-container box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.participant-name {
+.predictions-viewer-container font-weight: bold;
+}
+
+.prediction-result {
+.predictions-viewer-container color: var(--secondary);
+.predictions-viewer-container font-weight: bold;
+}
+
+.no-matches {
+.predictions-viewer-container text-align: center;
+.predictions-viewer-container padding: 2rem;
+.predictions-viewer-container background: white;
+.predictions-viewer-container border-radius: 12px;
+.predictions-viewer-container box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+.predictions-viewer-container font-size: 1.2rem;
+.predictions-viewer-container color: #666;
+}
+
+.predictions-viewer-container @media (max-width: 768px) {
+.match-header {
+.predictions-viewer-container flex-direction: column;
+.predictions-viewer-container align-items: flex-start;
+.predictions-viewer-container gap: 0.5rem;
+}
+
+.predictions-grid {
+.predictions-viewer-container grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+}
+
+.header-nav {
+.predictions-viewer-container flex-direction: column;
+.predictions-viewer-container text-align: center;
+}
+}
+
+.predictions-viewer-container @media (max-width: 480px) {
+.predictions-viewer-container h1 { font-size: 1.5rem; }
+.predictions-grid {
+.predictions-viewer-container grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+}
+}
+
+.predictions-viewer-container @media (max-width: 400px) {
+.predictions-grid {
+.predictions-viewer-container grid-template-columns: 1fr 1fr;
+}
+}
+
+.predictions-viewer-container @media (max-width: 360px) {
+.predictions-grid {
+.predictions-viewer-container grid-template-columns: 1fr;
+}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<div class="header-nav">
+ <a href="https://guille93.github.io/testchampions/" class="btn-return">← Volver a Clasificación</a>
+<h1>⚽ Porra Champions League</h1>
+<a href="https://www.fotmob.com/" class="live-results-btn" target="_blank">Resultados en directo</a>
+</div>
+</header>
+
+<div class="filter">
+<label for="dateFilter">Filtrar por fecha:</label>
+<select id="dateFilter" onchange="filterMatches()">
+<!-- Las opciones se generarán dinámicamente con JavaScript -->
+</select>
+</div>
+
+<div id="matchesContainer">
+<!-- Los partidos se generarán dinámicamente con JavaScript -->
+</div>
+</div>
+

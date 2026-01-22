@@ -53,20 +53,11 @@
                 </div>
             </div>
 
-<div id="pronosticos-tab" class="tab-content">
-    <h2><i class="fas fa-chart-bar"></i> Pronósticos Detallados</h2>
-    <div class="predictions-viewer-container">
-        <div class="filter">
-            <label for="dateFilter">Filtrar por fecha:</label>
-            <select id="dateFilter" onchange="app.filterPredictions()">
-                <!-- Las opciones se generarán dinámicamente -->
-            </select>
-        </div>
-        <div id="predictionsContainer">
-            <!-- Los partidos se generarán dinámicamente -->
-        </div>
-    </div>
-</div>
+            <div id="pronosticos-tab" class="tab-content">
+                <h2><i class="fas fa-external-link-alt"></i> Pronósticos Detallados</h2>
+                <p>Redirigiendo a la vista de pronósticos...</p>
+                <p>Si no eres redirigido automáticamente, <a href="https://guille93.github.io/predictions-viewer/" target="_blank">haz clic aquí</a>.</p>
+            </div>
 
             <div id="clasificacion-tab" class="tab-content">
                 <h2><i class="fas fa-chart-bar"></i> Clasificación de Participantes</h2>

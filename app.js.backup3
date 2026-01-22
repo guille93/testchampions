@@ -63,6 +63,12 @@ class ChampionsPorraApp {
     }
 
     switchTab(tabName) {
+        if (tabName === 'pronosticos') {
+            // Redirigir a la vista externa
+            window.location.href = 'https://guille93.github.io/predictions-viewer/';
+            return;
+        }
+
         // Solo admin puede ver la pestaña League
         if (tabName === 'league' && !this.isAdmin) {
             alert('Solo el administrador puede acceder a la pestaña League.');
@@ -78,9 +84,6 @@ class ChampionsPorraApp {
         switch (tabName) {
             case 'league':
                 this.renderLeagueTab();
-                break;
-            case 'pronosticos':
-                this.renderPronosticosTab();
                 break;
             case 'clasificacion':
                 this.renderClasificacionTab();
@@ -403,6 +406,7 @@ class ChampionsPorraApp {
         // Calcular estadísticas variadas
         const mostExact = ranking.reduce((a, b) => a.exactHits > b.exactHits ? a : b);
         const mostSign = ranking.reduce((a, b) => a.signHits > b.signHits ? a : b);
+        const bestStreak = this.calculateBestStreak(); // Implementar si es posible
         
         let statsHTML = `
             <table class="table stats-table">
@@ -438,6 +442,11 @@ class ChampionsPorraApp {
             </table>
         `;
         document.getElementById('statistics-table').innerHTML = statsHTML;
+    }
+
+    calculateBestStreak() {
+        // Implementar cálculo de mejor racha de aciertos si es posible
+        return 'Por implementar';
     }
 
     validateData(ranking) {
@@ -605,160 +614,170 @@ class ChampionsPorraApp {
         if (homeGoals === awayGoals) return 'X';
         return '2';
     }
-
-    // Predictions Viewer Integration
-    transformToMatchesData() {
-        // Transform matches and predictions into matchesData format
-        const matches = this.data.matches;
-        const predictions = this.data.predictions;
-        const participants = this.data.participants;
-
-        // Group matches by date
-        const matchesByDate = {};
-        matches.forEach(match => {
-            const date = match.datetime.split('T')[0]; // Extract YYYY-MM-DD
-            if (!matchesByDate[date]) {
-                matchesByDate[date] = [];
-            }
-            matchesByDate[date].push(match);
-        });
-
-        // Convert to array similar to predictions-viewer format
-        const matchesData = [];
-        Object.keys(matchesByDate).sort().forEach(date => {
-            matchesByDate[date].forEach(match => {
-                const predictionsArray = participants.map(participant => {
-                    const pred = predictions[participant] && predictions[participant][match.id];
-                    if (pred && pred.predHome !== null && pred.predAway !== null) {
-                        // Determine sign: 1, X, 2
-                        let sign = 'X';
-                        if (pred.predHome > pred.predAway) sign = '1';
-                        else if (pred.predHome < pred.predAway) sign = '2';
-                        return `${sign}|${pred.predHome}-${pred.predAway}`;
-                    } else {
-                        return ''; // No prediction
-                    }
-                });
-
-                matchesData.push({
-                    date: date,
-                    teams: `${match.home}-${match.away}`,
-                    predictions: predictionsArray
-                });
-            });
-        });
-
-        return matchesData;
-    }
-
-    renderPronosticosTab() {
-        const matchesData = this.transformToMatchesData();
-        const participants = this.data.participants;
-        const container = document.getElementById('predictionsContainer');
-        if (!container) return;
-
-        container.innerHTML = '';
-
-        if (matchesData.length === 0) {
-            container.innerHTML = '<div class="no-matches">No hay partidos disponibles</div>';
-            return;
-        }
-
-        // Create match cards
-        matchesData.forEach(match => {
-            const matchCard = document.createElement('div');
-            matchCard.className = 'match-card';
-            matchCard.dataset.date = match.date;
-
-            // Header
-            const header = document.createElement('div');
-            header.className = 'match-header';
-            header.innerHTML = `
-                <div class="match-date">${match.date}</div>
-                <div class="match-teams">${match.teams}</div>
-            `;
-
-            // Predictions grid
-            const predictionsGrid = document.createElement('div');
-            predictionsGrid.className = 'predictions-grid';
-
-            match.predictions.forEach((prediction, index) => {
-                const predictionItem = document.createElement('div');
-                predictionItem.className = 'prediction-item';
-                predictionItem.innerHTML = `
-                    <span class="participant-name">${participants[index]}</span>
-                    <span class="prediction-result">${prediction || 'Sin pronóstico'}</span>
-                `;
-                predictionsGrid.appendChild(predictionItem);
-            });
-
-            matchCard.appendChild(header);
-            matchCard.appendChild(predictionsGrid);
-            container.appendChild(matchCard);
-        });
-
-        // Generate date filter options
-        this.generateDateFilterOptions(matchesData);
-    }
-
-    generateDateFilterOptions(matchesData) {
-        const dateFilter = document.getElementById('dateFilter');
-        if (!dateFilter) return;
-
-        // Get unique dates
-        const uniqueDates = [...new Set(matchesData.map(match => match.date))];
-        uniqueDates.sort((a, b) => new Date(a) - new Date(b));
-
-        // Clear existing options
-        dateFilter.innerHTML = '';
-
-        // Add "All" option
-        const allOption = document.createElement('option');
-        allOption.value = 'all';
-        allOption.textContent = 'Todos los partidos';
-        dateFilter.appendChild(allOption);
-
-        // Add date options
-        uniqueDates.forEach(date => {
-            const option = document.createElement('option');
-            option.value = date;
-            option.textContent = date;
-            dateFilter.appendChild(option);
-        });
-
-        // Set default to first date or 'all'
-        if (uniqueDates.length > 0) {
-            dateFilter.value = uniqueDates[0];
-        } else {
-            dateFilter.value = 'all';
-        }
-
-        // Trigger initial filter
-        this.filterPredictions();
-    }
-
-    filterPredictions() {
-        const selectedDate = document.getElementById('dateFilter').value;
-        const matchCards = document.querySelectorAll('#predictionsContainer .match-card');
-        let hasVisibleMatches = false;
-
-        matchCards.forEach(card => {
-            if (selectedDate === 'all' || card.dataset.date === selectedDate) {
-                card.style.display = 'block';
-                hasVisibleMatches = true;
-            } else {
-                card.style.display = 'none';
-            }
-        });
-
-        const container = document.getElementById('predictionsContainer');
-        if (!hasVisibleMatches && container) {
-            container.innerHTML = '<div class="no-matches">No hay partidos para la fecha seleccionada</div>';
-        }
-    }
 }
 
 // Iniciar la aplicación cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {
     window.app = new ChampionsPorraApp();
 });
+
+// Predictions Viewer Integration
+ChampionsPorraApp.prototype.transformToMatchesData = function() {
+    // Transform matches and predictions into matchesData format
+    const matches = this.data.matches;
+    const predictions = this.data.predictions;
+    const participants = this.data.participants;
+
+    // Group matches by date
+    const matchesByDate = {};
+    matches.forEach(match => {
+        const date = match.datetime.split('T')[0]; // Extract YYYY-MM-DD
+        if (!matchesByDate[date]) {
+            matchesByDate[date] = [];
+        }
+        matchesByDate[date].push(match);
+    });
+
+    // Convert to array similar to predictions-viewer format
+    const matchesData = [];
+    Object.keys(matchesByDate).sort().forEach(date => {
+        matchesByDate[date].forEach(match => {
+            const predictionsArray = participants.map(participant => {
+                const pred = predictions[participant] && predictions[participant][match.id];
+                if (pred && pred.predHome !== null && pred.predAway !== null) {
+                    // Determine sign: 1, X, 2
+                    let sign = 'X';
+                    if (pred.predHome > pred.predAway) sign = '1';
+                    else if (pred.predHome < pred.predAway) sign = '2';
+                    return `${sign}|${pred.predHome}-${pred.predAway}`;
+                } else {
+                    return ''; // No prediction
+                }
+            });
+
+            matchesData.push({
+                date: date,
+                teams: `${match.home}-${match.away}`,
+                predictions: predictionsArray
+            });
+        });
+    });
+
+    return matchesData;
+};
+
+ChampionsPorraApp.prototype.renderPronosticosTab = function() {
+    const matchesData = this.transformToMatchesData();
+    const participants = this.data.participants;
+    const container = document.getElementById('predictionsContainer');
+    if (!container) return;
+
+    container.innerHTML = '';
+
+    if (matchesData.length === 0) {
+        container.innerHTML = '<div class="no-matches">No hay partidos disponibles</div>';
+        return;
+    }
+
+    // Create match cards
+    matchesData.forEach(match => {
+        const matchCard = document.createElement('div');
+        matchCard.className = 'match-card';
+        matchCard.dataset.date = match.date;
+
+        // Header
+        const header = document.createElement('div');
+        header.className = 'match-header';
+        header.innerHTML = `
+            <div class="match-date">${match.date}</div>
+            <div class="match-teams">${match.teams}</div>
+        `;
+
+        // Predictions grid
+        const predictionsGrid = document.createElement('div');
+        predictionsGrid.className = 'predictions-grid';
+
+        match.predictions.forEach((prediction, index) => {
+            const predictionItem = document.createElement('div');
+            predictionItem.className = 'prediction-item';
+            predictionItem.innerHTML = `
+                <span class="participant-name">${participants[index]}</span>
+                <span class="prediction-result">${prediction || 'Sin pronóstico'}</span>
+            `;
+            predictionsGrid.appendChild(predictionItem);
+        });
+
+        matchCard.appendChild(header);
+        matchCard.appendChild(predictionsGrid);
+        container.appendChild(matchCard);
+    });
+
+    // Generate date filter options
+    this.generateDateFilterOptions(matchesData);
+};
+
+ChampionsPorraApp.prototype.generateDateFilterOptions = function(matchesData) {
+    const dateFilter = document.getElementById('dateFilter');
+    if (!dateFilter) return;
+
+    // Get unique dates
+    const uniqueDates = [...new Set(matchesData.map(match => match.date))];
+    uniqueDates.sort((a, b) => new Date(a) - new Date(b));
+
+    // Clear existing options
+    dateFilter.innerHTML = '';
+
+    // Add "All" option
+    const allOption = document.createElement('option');
+    allOption.value = 'all';
+    allOption.textContent = 'Todos los partidos';
+    dateFilter.appendChild(allOption);
+
+    // Add date options
+    uniqueDates.forEach(date => {
+        const option = document.createElement('option');
+        option.value = date;
+        option.textContent = date;
+        dateFilter.appendChild(option);
+    });
+
+    // Set default to first date or 'all'
+    if (uniqueDates.length > 0) {
+        dateFilter.value = uniqueDates[0];
+    } else {
+        dateFilter.value = 'all';
+    }
+
+    // Trigger initial filter
+    this.filterPredictions();
+};
+
+ChampionsPorraApp.prototype.filterPredictions = function() {
+    const selectedDate = document.getElementById('dateFilter').value;
+    const matchCards = document.querySelectorAll('#predictionsContainer .match-card');
+    let hasVisibleMatches = false;
+
+    matchCards.forEach(card => {
+        if (selectedDate === 'all' || card.dataset.date === selectedDate) {
+            card.style.display = 'block';
+            hasVisibleMatches = true;
+        } else {
+            card.style.display = 'none';
+        }
+    });
+
+    const container = document.getElementById('predictionsContainer');
+    if (!hasVisibleMatches && container) {
+        container.innerHTML = '<div class="no-matches">No hay partidos para la fecha seleccionada</div>';
+    }
+};
+
+// Update the switchTab method to handle pronosticos tab
+// I need to modify the existing switchTab method. First, let's check where it is in the file.
+// Since I'm appending, I should override or modify it. I'll add a patch at the end.
+// But better to edit the existing method. Since I have the full app.js, I can replace it.
+// However, to avoid rewriting the entire file, I'll add a method call in init or update switchTab.
+// From the current app.js, switchTab is defined in the constructor via setupEventListeners.
+// I need to update the switchTab function to include pronosticos.
+// Let me first see the current switchTab method by looking at app.js.
+// I'll do a quick grep to find its definition.
